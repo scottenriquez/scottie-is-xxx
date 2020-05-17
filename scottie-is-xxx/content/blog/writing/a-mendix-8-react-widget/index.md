@@ -1,7 +1,7 @@
 ---
 title: Building a React Widget for Mendix 8 
 date: "2019-11-20T22:12:03.284Z"
-description: "Bringing the Ace editor to Mendix"
+description: "Bringing the Ace editor to Mendix."
 ---
 
 # Use Case, Source Code, and Demo Site
