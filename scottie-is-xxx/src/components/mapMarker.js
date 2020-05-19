@@ -1,9 +1,11 @@
 import React from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarker } from '@fortawesome/free-solid-svg-icons'
 
 const MapMarker = () => {
     return (
         <div>
-            This is my marker
+            <FontAwesomeIcon icon={faMapMarker} size="3x" />
         </div>
     )
 }
