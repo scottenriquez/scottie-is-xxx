@@ -39,6 +39,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
+        console.log(node)
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -57,7 +58,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
             <section>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.description,
                 }}
               />
             </section>
@@ -87,6 +88,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            description
           }
         }
       }
