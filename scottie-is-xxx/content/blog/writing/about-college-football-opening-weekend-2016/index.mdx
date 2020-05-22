@@ -4,6 +4,7 @@ date: "2016-11-06T22:12:03.284Z"
 description: "An epic trip to start the season."
 ---
 import getGoogleMapsAPIKey from '../../../../src/services/googleMapsAPIKeyService'
+import getGoogleMapsOptionsSettings from '../../../../src/services/googleMapsOptionsService'
 import GoogleMapReact from 'google-map-react'
 import MapMarker from '../../../../src/components/mapMarker'
 
@@ -16,6 +17,7 @@ Before the start of the 2016 college football season, two good friends and I dec
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 32.899800, lng: -97.040636}}
         defaultZoom={9}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={32.899800} lng={-97.040636} />
     </GoogleMapReact>
@@ -30,6 +32,7 @@ The journey began with a five-hour drive from northern Oklahoma to a hotel adjac
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 37.712384, lng: -122.218832}}
         defaultZoom={9}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={37.712384} lng={-122.218832} />
     </GoogleMapReact>
@@ -61,6 +64,7 @@ After the very solid matchup, we took an Uber from Palo Alto back to San Francis
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 30.619470, lng: -96.338035}}
         defaultZoom={9}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={30.619470} lng={-96.338035} />
     </GoogleMapReact>
@@ -91,6 +95,7 @@ As much as I would have liked to check out the local scene, we ate Buffalo Wild 
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 30.283983, lng: -97.732759}}
         defaultZoom={9}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={30.283983} lng={-97.732759} />
     </GoogleMapReact>

@@ -4,6 +4,7 @@ date: "2016-06-05T22:12:03.284Z"
 description: "A detailed log from my second journey to Japan."
 ---
 import getGoogleMapsAPIKey from '../../../../src/services/googleMapsAPIKeyService'
+import getGoogleMapsOptionsSettings from '../../../../src/services/googleMapsOptionsService'
 import GoogleMapReact from 'google-map-react'
 import MapMarker from '../../../../src/components/mapMarker'
 
@@ -13,6 +14,7 @@ import MapMarker from '../../../../src/components/mapMarker'
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 35.772230, lng: 140.392904}}
         defaultZoom={7}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={35.772230} lng={140.392904} />
     </GoogleMapReact>
@@ -31,6 +33,7 @@ We all purchased our tickets and awaited the Skyliner express train. Right on sc
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 35.710324, lng: 139.810657}}
         defaultZoom={9}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={35.710324} lng={139.810657} />
     </GoogleMapReact>
@@ -53,6 +56,7 @@ That’s not to say that you're never exposed to copious amount of people. From 
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 35.491928, lng: 138.682636}}
         defaultZoom={7}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={35.491928} lng={138.682636} />
     </GoogleMapReact>
@@ -93,6 +97,7 @@ We decided to follow the tissues. Honestly, I hadn't taken into consideration wh
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 35.644085, lng: 140.04023}}
         defaultZoom={7}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={35.644085} lng={140.04023} />
     </GoogleMapReact>
@@ -109,6 +114,7 @@ I had the pleasure of seeing two of my favorite bands that I frequently listened
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 35.012881, lng: 135.677749}}
         defaultZoom={7}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={35.012881} lng={135.677749} />
     </GoogleMapReact>
@@ -139,6 +145,7 @@ The next day was mostly reserved for traveling. From Kyoto Station, we went to K
         bootstrapURLKeys={{ key: getGoogleMapsAPIKey() }}
         defaultCenter={{lat: 26.699348, lng: 127.902083}}
         defaultZoom={7}
+        options={getGoogleMapsOptionsSettings()}
     >
     <MapMarker lat={26.699348} lng={127.902083} />
     </GoogleMapReact>

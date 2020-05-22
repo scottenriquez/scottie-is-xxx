@@ -1,11 +1,11 @@
 // @ts-ignore
 import React from "react"
 import { PageProps, Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+import '../style/base.css'
 
 type Data = {
   site: {
@@ -39,7 +39,6 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }) => {
-        console.log(node)
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
