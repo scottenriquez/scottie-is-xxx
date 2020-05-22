@@ -1,5 +1,5 @@
 ---
-title: "Life on the Street Is a Dead End" 
+title: "Life on the Street Is a Dead End"
 date: "2014-02-22T22:12:03.284Z"
 description: "Thoughts on witnessing the socioeconomic inequities of Anchorage firsthand."
 ---
@@ -20,6 +20,6 @@ During my internship, I didn’t have a car. I had one more semester awaiting me
 
 Whenever a rider would get on the bus, they would either feed money into the designated slot or slide their bus pass across the face of the machine. A loud beep would resonate throughout the bus, signaling their entrance. When I got on the bus, I simply showed the driver my badge and entered, and they would have to manually enter a code. Honestly, I felt guilty about it at first. It was as if it were some underhanded deal. Why should I who could afford the fare ride for free? I received a lot of dirty looks from the patrons as well, I assume because donning my business clothes on the bus was insulting to them. Maybe it's the same look that button-downs would give someone in their office wearing street clothes. I didn’t see many corporate employees riding the bus, mostly just laborers in tattered work clothes. I grew accustomed to it, because I didn’t have the option to avoid it. Eventually, I became a regular, and the faces all became familiar. Now, when I take my strolls downtown, I see the value in sharing the sidewalk.
 
-On my walk today, I saw a mural proclaiming that *life on the street is a dead end*. After that, I saw three young people hitting a crack pipe in a nearby alley. I couldn’t help but think that the message wasn’t lost on them, rather it was worthless to them. It’s easy to talk about change and opportunity, but what can they really do when their future was predestined by the socioeconomic circumstances that they were born into?
+On my walk today, I saw a mural proclaiming that _life on the street is a dead end_. After that, I saw three young people hitting a crack pipe in a nearby alley. I couldn’t help but think that the message wasn’t lost on them, rather it was worthless to them. It’s easy to talk about change and opportunity, but what can they really do when their future was predestined by the socioeconomic circumstances that they were born into?
 
 Sometimes, we all need to ride the bus. We all need to spend some time at the Transit Center. We need to remember that when homeless people approach asking for change, they don't just need the money in your pocket.

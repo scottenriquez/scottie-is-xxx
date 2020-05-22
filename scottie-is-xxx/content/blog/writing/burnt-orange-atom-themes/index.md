@@ -1,5 +1,5 @@
 ---
-title: Burnt Orange Atom Themes 
+title: Burnt Orange Atom Themes
 date: "2016-08-16T22:12:03.284Z"
 description: "Showing love for the greatest color in the best text editor."
 ---

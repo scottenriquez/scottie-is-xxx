@@ -1,5 +1,5 @@
 ---
-title: A Timeline for Learning Japanese 
+title: A Timeline for Learning Japanese
 date: "2012-12-04T22:12:03.284Z"
 description: "An outline of the road to Japanese fluency."
 ---
@@ -18,6 +18,7 @@ Without the neatly defined classroom aspect the first couple of years of Japanes
 From what I've personally seen on the internet, there seems to be a great deal of resources for achieving steps 1-4, which can be completed in a few months. However, I feel that steps 5-8 are where students (including myself) tend to stagnate, and there simply are not as many resources. Heisig's method is impeccable, but it's a process in and of itself. There is somewhat of an art to perfectly blending all aspects of Japanese study into a unified method. As a student beginning in step 5, I'm documenting my journey from here until fluency, both for myself and in the hopes that someone who is stuck where I was can benefit from my experience.
 
 In the next series of posts, I address:
+
 - How to use Heisig's method
 - Indispensable tools and applications
 - Sources of reading material and other Japanese media

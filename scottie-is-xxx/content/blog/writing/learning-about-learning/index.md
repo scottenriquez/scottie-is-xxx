@@ -1,5 +1,5 @@
 ---
-title: Learning About Learning 
+title: Learning About Learning
 date: "2013-11-14T22:12:03.284Z"
 description: "A reflection on my undergraduate career."
 ---

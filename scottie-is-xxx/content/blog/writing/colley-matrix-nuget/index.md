@@ -5,9 +5,11 @@ description: "A NuGet package for the Colley Matrix algorithm."
 ---
 
 # Overview
+
 It's very well documented that I'm a huge college football fan. We're presently in the College Football Playoff era of Division I football, which involves a selection committee choosing four playoff teams to compete to be the national champion. The previous era, known as the Bowl Championship Series era, involved a combined poll of human experts and computer algorithms choosing the two best teams to play in the national championship game. One such algorithm is known as the Colley Matrix. Though not a factor in the post-season selection process anymore, it's still referred to at times, particularly when debating the selection committee’s decisions. Based on the [whitepaper](http://www.colleyrankings.com/matrate.pdf) written by Colley himself and [an existing JavaScript implementation](an existing JavaScript implementation), I developed this [NuGet package](https://www.nuget.org/packages/ColleyMatrix/) for simulating head-to-head matchups and applying the Colley algorithm. This algorithm can be applied to any sport or competitions without tie games.
 
 # Useage
+
 The `ColleyMatrix` client exposes two methods: `SimulateGame` and `Solve`. The client constructor takes one argument: `numberOfTeams`.
 
 ```csharp
@@ -24,12 +26,12 @@ Note that if the `winnerId` or `loserId` is not valid respective to the sparse m
 
 You can solve the sparse matrix at any point without modifying the internal state. The solved vector that is returned is a list of scores with the highest score indicating the best team.
 
-
 ```csharp
 IEnumerable<double> solvedVector = colleyMatrix.Solve();
 ```
 
 # Basics of Implementation
+
 `SimulateGame` updates the matrix state which is wrapped by an interface called `IMatrixProvider`. This removes the dependency on a specific matrix implementation from the underlying domain logic. For reference, the `ColleyMatrix` client ultimately injects a Math.NET `SparseMatrix`. The updates to the matrix state are very simple.
 
 ```csharp
@@ -63,4 +65,5 @@ IEnumerable<double> solvedVector = _matrixProvider.LowerUpperFactorizeAndSolve(c
 ```
 
 # Build Status
+
 [![Build status](https://travis-ci.org/scottenriquez/colley-matrix-nuget.svg?branch=master)](https://travis-ci.org/scottenriquez/colley-matrix-nuget)

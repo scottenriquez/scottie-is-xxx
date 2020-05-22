@@ -23,7 +23,7 @@ const Bio = () => {
           social {
             github
             instagram
-            gaming 
+            gaming
           }
         }
       }

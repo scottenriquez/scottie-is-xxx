@@ -11,7 +11,7 @@ module.exports = {
       twitter: `xxxscottie`,
       github: `scottenriquez`,
       instagram: `scottenriquez`,
-      gaming: `exoentropy`
+      gaming: `exoentropy`,
     },
   },
   plugins: [

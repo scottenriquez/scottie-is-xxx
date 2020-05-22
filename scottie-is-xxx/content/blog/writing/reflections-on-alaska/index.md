@@ -1,5 +1,5 @@
 ---
-title: Reflections on Alaska 
+title: Reflections on Alaska
 date: "2013-09-13T22:12:03.284Z"
 description: "Thoughts on my summer internship in Anchorage, Alaska."
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Bright Nights, Nomadic Days" 
+title: "Bright Nights, Nomadic Days"
 date: "2014-06-22T22:12:03.284Z"
 description: "Wandering around after graduation."
 ---

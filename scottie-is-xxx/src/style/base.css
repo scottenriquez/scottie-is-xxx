@@ -1,3 +1,23 @@
 html {
     background-color: #0d0d0d;
 }
+
+p code {
+    background-color: #DE6E18 !important;
+    color: white !important;
+}
+
+body a {
+    color: #DE6E18 !important;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+body a:hover,
+body a:focus {
+    text-decoration: none;
+    color: white !important;
+    background-color: #DE6E18;
+    border-radius: 5px;
+}
