@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `一期一会 by Scottie`,
+    title: `Scottie Enriquez`,
     author: {
       name: `Scottie Enriquez`,
-      summary: `is a Houston-based solution architect, software developer, and volunteer high school teaching assistant.`,
+      summary: `is a Houston-based cloud solution architect, software developer, and volunteer high school teaching assistant.`,
     },
     description: `Blog and personal website of Scottie Enriquez`,
     siteUrl: `https://scottie.is/`,

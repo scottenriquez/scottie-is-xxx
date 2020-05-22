@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import { rhythm, scale } from "../utils/typography"
 import scottSLogo from "../../content/assets/scott-s.svg"
+import blogBLogo from "../../content/assets/blog-b.svg"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -14,7 +15,7 @@ const Layout = ({ location, title, children }) => {
           ...scale(1.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
-          textAlign: `center`
+          textAlign: `center`,
         }}
       >
         <img alt={`Scottie Enriquez`} src={scottSLogo} />
@@ -52,6 +53,10 @@ const Layout = ({ location, title, children }) => {
     >
       <header>{header}</header>
       <main>{children}</main>
+      <br />
+      <div style={{ textAlign: `center` }}>
+        <img src={blogBLogo} alt={`Blog`} />
+      </div>
     </div>
   )
 }

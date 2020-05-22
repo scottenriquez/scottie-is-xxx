@@ -1,11 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -62,14 +64,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
+                <FontAwesomeIcon icon={faArrowCircleLeft} />{" "}
+                {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
               <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
+                {next.frontmatter.title}{" "}
+                <FontAwesomeIcon icon={faArrowCircleRight} />
               </Link>
             )}
           </li>
