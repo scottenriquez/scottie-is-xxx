@@ -117,7 +117,7 @@ Find the complete source code [here](https://github.com/scottenriquez/visual-stu
 
 AWS has built extensive CLI tooling and templating for building .NET Core serverless functions on Lambda. Assuming you have .NET Core installed and added to your `PATH`, you can run `dotnet new -i Amazon.Lambda.Templates` to install the Lambda templates and `dotnet tool install -g Amazon.Lambda.Tools` to install the Lambda tools. With a few commands, you can have a brand new .NET Core serverless function created, deployed to AWS, and invoke the function from the command line.
 
-```shell script
+```shell
 #!/usr/env/bin bash
 # create a new serverless function from the Lambda template
 dotnet new lambda.EmptyFunction --name MyFunction
@@ -168,7 +168,7 @@ protected override async Task ExecuteAsync(CancellationToken stoppingToken)
 
 I also implemented a simple deployment script to migrate the `.service` file to the correct folder for systemd, map the executable, and start the service. The rest is handled by .NET Core.
 
-```shell script
+```shell
 #!/usr/env/bin bash
 dotnet build
 dotnet publish -c Release -r linux-x64 --self-contained true
