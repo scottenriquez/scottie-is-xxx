@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
-
 import { rhythm, scale } from "../utils/typography"
+import scottSLogo from "../../content/assets/scott-s.svg"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -14,17 +14,10 @@ const Layout = ({ location, title, children }) => {
           ...scale(1.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
+          textAlign: `center`
         }}
       >
-        <Link
-          style={{
-            boxShadow: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
+        <img alt={`Scottie Enriquez`} src={scottSLogo} />
       </h1>
     )
   } else {

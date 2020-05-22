@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="129.90381" height="135" viewBox="0 0 129.90381 135">
+    <defs>
+        <style>
+            .a {
+            isolation: isolate;
+            }
+
+            .b {
+            opacity: 0.6;
+            mix-blend-mode: screen;
+            }
+
+            .c {
+            fill: #de6e18;
+            }
+        </style>
+    </defs>
+    <title>c-transparentsvg</title>
+    <g class="a">
+        <g class="b">
+            <polygon class="c" points="64.952 120 0 82.5 0 97.5 64.952 135 129.904 97.5 129.904 82.5 64.952 120"/>
+            <polygon class="c" points="64.952 97.5 0 60 0 75 64.952 112.5 129.904 75 129.904 60 64.952 97.5"/>
+            <polygon class="c"
+                     points="77.942 67.5 25.981 37.5 64.952 15 64.952 0 0 37.5 0 37.5 0 52.5 0 52.5 64.952 90 129.904 52.5 129.904 37.5 77.942 67.5"/>
+        </g>
+    </g>
+</svg>
