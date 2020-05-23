@@ -82,3 +82,8 @@ For the past five or so years, AWS has been my exclusive hosting provider. While
 # Overall Thoughts
 
 It's been interesting so far writing a blog post in WebStorm, my preferred IDE. I also installed a grammar and spelling checking plugin there. Markdown is much more natural to write than HTML for new content. Viewing my posts as I write them via a local webserver with hot reloading is handy compared to having to write to external, persistent storage. Deploying my content with a simple `git push origin master` and letting Netlify take care of the rest is extremely satisfying. You can find all the source code [in this repository](https://github.com/scottenriquez/scottie-is-xxx). As always, I'm sure all of this will be obsolete in a few years.
+
+# Bonus: Dark
+I managed to secure a private beta for a backend development platform called Dark recently. Dark is a holistic solution for backends that allows developers to write logic using Darklang, deploy APIs, create databases, and implement background worker processes all from the browser in mere seconds. Resource management and code deployments happen in near real-time, which allows for incredibly fast prototyping and implementation. Even fumbling through some beta issues and limited documentation, I was able to implement a clap feature similar to the one from the website Medium in about an hour. I intend to migrate my serverless functions to Dark shortly.
+
+![Dark](./claps-in-dark-lang.png)
