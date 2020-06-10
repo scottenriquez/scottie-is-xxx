@@ -75,7 +75,7 @@ Recruiting timeline events are stored in the following path: `/recruit-timeline-
 }
 ```
 
-Given the large amount of data to process during stage two, this repository also includes a bootstrapping script for EC2 instances to install the Python tooling, configure the virtual environment, and pull the data from stage one via S3:
+Given the large amount of data to process during stage two, this repository also includes a bootstrapping shell script for EC2 instances to install the Python tooling, configure the virtual environment, and pull the data from stage one via S3. Pass the following to the user data field when provisioning a new EC2 instance:
 ```shell
 #!/bin/bash
 sudo yum install git -y
