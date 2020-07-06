@@ -1,7 +1,7 @@
 ---
 title: "Why Learn Swift and iOS? Why Now?" 
 date: "2020-07-05T22:12:03.284Z"
-description: "The start of a spinoff blog called Scottie Codes Swift."
+description: "The start of a spinoff blog about Swift development."
 ---
 Frontend web development is in a perpetual state of turmoil, and I'm getting too old for it.
 
