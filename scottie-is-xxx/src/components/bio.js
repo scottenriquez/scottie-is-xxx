@@ -52,7 +52,7 @@ const Bio = () => {
         }}
       />
       <p>
-        <strong>{author.name}</strong> {author.summary}
+        <strong>{author.name}</strong> {author.summary} View my resume <a href='/serving/resume.pdf'>here</a>.
       </p>
     </div>
   )
