@@ -71,7 +71,8 @@ Recruiting timeline events are stored in the following path: `/recruit-timeline-
     "247_id": "46038819",
     "event_date": "2020-01-08",
     "event_type": "Enrollment",
-    "event_description": "Bryan Bresee enrolls at Clemson Tigers"
+    "event_description": "Bryan Bresee enrolls at Clemson Tigers",
+    "school": "Clemson"
 }
 ```
 
