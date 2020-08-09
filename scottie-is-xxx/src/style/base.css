@@ -6,6 +6,10 @@ h1, h2, h3, h4, h5, h6 {
     border-bottom-color: #424242;
 }
 
+hr {
+    background-color: #424242;
+}
+
 p code {
     background-color: #DE6E18 !important;
     color: white !important;
