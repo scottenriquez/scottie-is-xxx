@@ -1,6 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faFilePdf } from "@fortawesome/free-solid-svg-icons"
 
 import { rhythm } from "../utils/typography"
 
@@ -30,7 +32,7 @@ const Bio = () => {
     }
   `)
 
-  const { author, social } = data.site.siteMetadata
+  const { author } = data.site.siteMetadata
   return (
     <div
       style={{
@@ -52,7 +54,7 @@ const Bio = () => {
         }}
       />
       <p>
-          <strong><a href="/serving/resume.pdf">{author.name}</a></strong> {author.summary}
+        I'm <a href="/serving/resume.pdf"><strong>Scottie Enriquez</strong> <FontAwesomeIcon icon={faFilePdf} /></a>, a Houston-based cloud solution architect, software developer, and volunteer high school teaching assistant. I also write an <a href="https://micro.scottie.blog/">indie microblog</a>, a blog about <a href="https://scottie.codes/swift/">Swift</a>, and a blog for <a href="https://www.thewinnerisatryhard.org/">my fantasy football league</a>.
       </p>
     </div>
   )
