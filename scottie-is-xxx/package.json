@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "scottie-is-xxx",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "The personal website of Scottie Enriquez",
+  "version": "1.0.0",
+  "author": "Scottie Enriquez",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },

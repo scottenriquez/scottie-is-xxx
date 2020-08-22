@@ -80,6 +80,7 @@ Content that would have been offloaded to an S3 bucket or separate CDN is now co
 For the past five or so years, AWS has been my exclusive hosting provider. While learning about JAMstack, I read about Netlify which provides an end-to-end platform for distributing highly performant, static websites. As part of the Netlify setup process via the web GUI, you can create a new environment, purchase or verify custom domains, provision an SSL certificate via Let's Encrypt, and create a CI/CD pipeline triggered by commits to a GitHub repository. All of this is free of charge and takes only a few minutes to get started. There's also a Netlify CLI in case you want to integrate with another pipeline or tool.
 
 # Build Status
+
 [![Netlify status](https://api.netlify.com/api/v1/badges/d6d2df4e-e264-4e3b-92f9-36141a3abe5d/deploy-status)](https://app.netlify.com/sites/nifty-booth-3bed9d/deploys)
 
 # Overall Thoughts
@@ -87,6 +88,7 @@ For the past five or so years, AWS has been my exclusive hosting provider. While
 It's been interesting so far writing a blog post in WebStorm, my preferred IDE. I also installed a grammar and spelling checking plugin there. Markdown is much more natural to write than HTML for new content. Viewing my posts as I write them via a local webserver with hot reloading is handy compared to having to write to external, persistent storage. Deploying my content with a simple `git push origin master` and letting Netlify take care of the rest is extremely satisfying. You can find all the source code [in this repository](https://github.com/scottenriquez/scottie-is-xxx). As always, I'm sure all of this will be obsolete in a few years.
 
 # Bonus: Dark
+
 I managed to secure a private beta for a backend development platform called Dark recently. Dark is a holistic solution for backends that allows developers to write logic using Darklang, deploy APIs, create databases, and implement background worker processes all from the browser in mere seconds. Resource management and code deployments happen in near real-time, which allows for incredibly fast prototyping and implementation. Even fumbling through some beta issues and limited documentation, I was able to implement a clap feature similar to the one from the website Medium in about an hour. I intend to migrate my serverless functions to Dark shortly.
 
 ![Dark](./claps-in-dark-lang.png)
