@@ -2,6 +2,7 @@
 title: Greetings from Gatsby
 date: "2020-05-22T22:12:03.284Z"
 description: "Migrating to JAMstack."
+tag: "Programming"
 ---
 
 # An Oral History of My Blog

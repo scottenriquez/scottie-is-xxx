@@ -2,6 +2,7 @@
 title: Another Journey Through the Heisig 2042
 date: "2012-11-26T22:12:03.284Z"
 description: "My second attempt to memorize the most commonly used Japanese characters."
+tag: "Japanese"
 ---
 
 Around a month ago, I began my second attempt at learning the 2042 Kanji for Common Use (常用漢字) using Heisig's method. It's a grueling, daunting, and equally rewarding task that measures dedication, creativity, ingenuity, and sheer memorization skills. While one may be able to become skilled at conversation without learning these characters and their corresponding readings, it is simply impossible to advance beyond elementary school reading without rigorous study of kanji. Despite having taken traditional Japanese classes for three years, I only know how to read around 300 characters strictly from what I learned in my classes. That leaves the vast majority for independent study. While classes are often grammar and vocabulary intensive, they simply do not emphasize kanji, ultimately yielding largely illiterate students.

@@ -2,6 +2,7 @@
 title: Learning About Learning
 date: "2013-11-14T22:12:03.284Z"
 description: "A reflection on my undergraduate career."
+tag: "Personal"
 ---
 
 My blog is nearing its first anniversary. Admittedly, I have failed to maintain it as I would have liked to over the past year. My instinctive response is to attribute this to a lack of time. As my college graduation swiftly draws near, I've been obsessed with the notion of time lately. With classes, work, side projects, and graduation rituals at hand, I find myself constantly thinking that there's just not enough time in one day. Not to mention that my exercise routine, Japanese studies, and myriad of other hobbies have suffered as well. Inevitably, there isn't enough time to do everything, but as I found myself updating my old articles about Japanese study, I realized that what I was trying to teach others about language study I should be applying to my own daily life.

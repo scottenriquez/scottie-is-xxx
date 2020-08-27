@@ -2,6 +2,7 @@
 title: TEALS Week One Postmortem
 date: "2018-09-03T22:12:03.284Z"
 description: "Successes and lessons learned during my first week of teaching computer science."
+tag: "Teaching"
 ---
 
 My first week of teaching is in the books, and there’s already a ton to reflect on. Overall, I think that class so far has been a success, but I’ve already identified several opportunities for improvement.

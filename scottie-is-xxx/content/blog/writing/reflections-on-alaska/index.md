@@ -2,6 +2,7 @@
 title: Reflections on Alaska
 date: "2013-09-13T22:12:03.284Z"
 description: "Thoughts on my summer internship in Anchorage, Alaska."
+tag: "Personal"
 ---
 
 Cold air fills my lungs as I inhale deeply and behold this marvel of geologic time. I feel introspective and insignificant as I imagine my short life span juxtaposed with this ancient, undefiled landscape. I try my best to take a mental snapshot of this moment near the peak, knowing fully well that nothing can ever recreate this moment. Gazing down over the untrodden path that led me here. Imbibing water to replace the icy sweat now soaking my clothes. Savoring a brief reprieve from a steep journey. Noting some clever metaphor. Solving the profound, metaphysical intricacies of life.

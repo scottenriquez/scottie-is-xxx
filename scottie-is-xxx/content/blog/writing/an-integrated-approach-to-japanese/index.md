@@ -2,6 +2,7 @@
 title: An Integrated Approach to Japanese Study
 date: "2012-12-15T22:12:03.284Z"
 description: "A guide for intermediate Japanese study."
+tag: "Japanese"
 ---
 
 There is a wealth of tools, applications, and media available to facilitate the study of Japanese. It is truly amazing people managed to learn without them. The following is a list of these tools and brief description of how I integrate them into my personal studies.

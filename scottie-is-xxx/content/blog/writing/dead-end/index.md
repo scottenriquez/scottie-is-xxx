@@ -2,6 +2,7 @@
 title: "Life on the Street Is a Dead End"
 date: "2014-02-22T22:12:03.284Z"
 description: "Thoughts on witnessing the socioeconomic inequities of Anchorage firsthand."
+tag: "Personal"
 ---
 
 My company’s office building is located in the heart of downtown Anchorage. This shimmering, golden beacon of American capitalism seems to cast a shadow over the Downtown Transit Center and its transient residents. Many are drunk and high; many are homeless and hopeless. Some even sell their bodies either for a quick fix or as a means of survival. They spend their dark days on the cold streets of Anchorage.

@@ -2,6 +2,7 @@
 title: "Visual Studio Live 2019: San Diego"
 date: "2019-10-01T22:12:03.284Z"
 description: "Thoughts and proofs-of-concepts from Visual Studio Live 2019 in San Diego."
+tag: "Programming"
 ---
 
 # Contents

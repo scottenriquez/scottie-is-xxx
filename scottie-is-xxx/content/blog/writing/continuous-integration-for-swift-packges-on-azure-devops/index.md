@@ -2,6 +2,7 @@
 title: Continuous Integration for Swift Packages in Azure DevOps
 date: "2020-08-04T22:12:03.284Z"
 description: "Building CI for Swift packages using Azure Pipelines."
+tag: "Programming"
 ---
 
 ## Overview

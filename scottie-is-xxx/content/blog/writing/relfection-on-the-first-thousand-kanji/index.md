@@ -2,6 +2,7 @@
 title: Reflections on the First Thousand Kanji
 date: "2013-01-13T22:12:03.284Z"
 description: "Thoughts on completing the first thousand characters."
+tag: "Japanese"
 ---
 
 I finished the first thousand kanji recently, and I can honestly say that in addition to learning a slew of new characters, I learned a lot about my study habits as well. I wanted to share some of the knowledge I obtained along the way:

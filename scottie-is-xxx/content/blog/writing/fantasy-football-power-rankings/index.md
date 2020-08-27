@@ -2,6 +2,7 @@
 title: Fantasy Football Power Rankings Markdown Generator
 date: "2020-08-21T22:12:03.284Z"
 description: "A CLI for creating posts for my league's fantasy football site."
+tag: "Programming"
 ---
 
 ## Overview

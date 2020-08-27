@@ -21,6 +21,7 @@ type Data = {
           title: string
           date: string
           description: string
+          tag: string
         }
         fields: {
           slug: string
@@ -52,7 +53,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small>{node.frontmatter.date}</small> | {" "} <small className="post-tag">{node.frontmatter.tag}</small>
             </header>
             <section>
               <p
@@ -88,6 +89,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tag
           }
         }
       }

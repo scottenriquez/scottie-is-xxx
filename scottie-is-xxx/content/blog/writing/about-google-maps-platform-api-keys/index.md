@@ -2,6 +2,7 @@
 title: Mitigating Risk With Using Google Maps API Keys in the Browser
 date: "2018-05-05T22:12:03.284Z"
 description: "Relevant to the June 2018 Terms of Service changes to the Google Maps platform."
+tag: "Programming"
 ---
 
 Recently, Google announced significant changes to the Maps platform to mixed reactions from the development community. While the myriad of products have now been combined and refactored for simplicity, the general concerns seem to stem around a steep increase in price, a Google billing account requirement, falling victim to overage charges from DDoS attacks, and a mere 30-day notice of these changes. All of these factors have many developers (especially of small to medium-sized projects) considering other platforms for map services.

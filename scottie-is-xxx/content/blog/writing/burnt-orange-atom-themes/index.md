@@ -2,6 +2,7 @@
 title: Burnt Orange Atom Themes
 date: "2016-08-16T22:12:03.284Z"
 description: "Showing love for the greatest color in the best text editor."
+tag: "Programming"
 ---
 
 It's safe to say that I'm biased because of my alma mater, but I personally think that burnt orange is one of the most versatile colors. It's somewhat polarizing due to being the primary color of the University of Texas, but I use it as one of the core colors here on my personal website to show my Longhorn pride. Inspired by this color palette, I've created a theme for Atom, my favorite text editor, and released version 1.0.0 just in time for the start of college football season.

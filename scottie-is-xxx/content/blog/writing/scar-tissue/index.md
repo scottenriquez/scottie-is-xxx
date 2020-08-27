@@ -2,6 +2,7 @@
 title: Scar Tissue
 date: "2013-12-18T22:12:03.284Z"
 description: "Thoughts on college graduation on returning to Alaska."
+tag: "Personal"
 ---
 
 On Saturday night, I handed in my last final exam. Honestly, it was an extremely anticlimactic ending. The final had no bearing on my graduation or GPA for that matter, so it wasn't really the concluding push that I envisioned being the end of my undergraduate stay. After a brief test, I said to my professor, "終わりですね..." and stole away into the chilly evening.

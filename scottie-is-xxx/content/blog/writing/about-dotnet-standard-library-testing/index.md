@@ -2,6 +2,7 @@
 title: Testing .NET Standard Libraries Using .NET Core, NUnit, and Travis CI
 date: "2018-04-16T22:12:03.284Z"
 description: "Getting started testing .NET Standard class libraries."
+tag: "Programming"
 ---
 
 While my development choices for the frontend change as rapidly as new JavaScript frameworks come and go, I've remained pretty consistent with using the .NET ecosystem for my server-side needs. I still use Node.js, Spring Boot, and Flask for several side projects, but I've grown to love the power of .NET and C# over the past several years while it has been the default technology at my job. My two biggest complaints were the monolithic scale of .NET Framework and the fact that it required Windows (or Mono which hasn't always been backed by Xamarin/Microsoft). Both of these changed with the advent of .NET Core. This alternative is cross-platform, modular, and much more performant. While both .NET Framework and .NET Core are implementations of .NET Standard, .NET Core very much seems to be the preferred way of the future.

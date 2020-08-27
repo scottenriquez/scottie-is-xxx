@@ -2,6 +2,7 @@
 title: Kanji Alive NuGet Package
 date: "2016-11-27T22:12:03.284Z"
 description: "A NuGet package for the Kanji Alive project."
+tag: "Programming"
 ---
 
 # Overview

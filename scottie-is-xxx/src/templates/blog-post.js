@@ -37,7 +37,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date}
+            {post.frontmatter.date} | <span className="post-tag">{post.frontmatter.tag}</span>
           </p>
         </header>
         <MDXRenderer>{post.body}</MDXRenderer>
@@ -100,6 +100,7 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        tag
       }
     }
   }
