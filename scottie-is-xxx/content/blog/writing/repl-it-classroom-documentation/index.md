@@ -53,7 +53,7 @@ Given that most assignments fit into a single file, I haven't injected any opini
 
 I've included an [EditorConfig](https://editorconfig.org/) file in this project so that the code styling remains consistent across multiple codebases. EditorConfig is IDE-agnostic with plugins or native integration across IntelliJ, Visual Studio Code, Eclipse, etc.
 
-```shell
+```editorconfig
 root = true
 
 [*]

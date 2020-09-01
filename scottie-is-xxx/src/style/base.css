@@ -50,7 +50,7 @@ body a:focus {
     background: black;
     border-radius: 0 0 0.25rem 0.25rem;
     color: white;
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: 0.025rem;
     padding: 0.1rem 0.5rem;
     position: absolute;
@@ -127,6 +127,12 @@ body a:focus {
 
 .gatsby-highlight pre[class="language-json"]::before {
     content: "JSON";
+    background: #5c8464;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-editorconfig"]::before {
+    content: "EditorConfig";
     background: #5c8464;
     color: white;
 }
