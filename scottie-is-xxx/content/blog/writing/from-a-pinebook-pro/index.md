@@ -1,5 +1,5 @@
 ---
-title: "WIP: Testing the PINEBOOK Pro as a Daily Driver"
+title: "Testing the PINEBOOK Pro as a Daily Driver"
 date: "2020-07-11T22:12:03.284Z"
 description: "Using a $200 laptop as my primary machine."
 tag: "Hardware"
@@ -7,7 +7,7 @@ tag: "Hardware"
 
 ## Hardware
 
-For \$200, the laptop is extremely well-made. The keyboard is comfortable for typing (although PINE64 only had the ISO keyboard model available which is an adjustment for me). The body is made out of metal and doesn't feel cheap. The sound is serviceable though one of the weaker parts of the laptop. I consistently get download speeds of up to 50mbps over AT&T fiber at home. The battery life has been good so far. There are no glaring design flaws to speak of. Here's an overview of the specs:
+For 200 USD, the laptop is extremely well-made. The keyboard is comfortable for typing (although PINE64 only had the ISO keyboard model available which is an adjustment for me). The body is made out of metal and doesn't feel cheap. The sound is serviceable though one of the weaker parts of the laptop. I consistently get download speeds of up to 50mbps over AT&T fiber at home. The battery life has been good so far. There are no glaring design flaws to speak of. Here's an overview of the specs:
 
 - Rockchip RK3399 SOC with Mali T860 MP4 GPU
 - 4GB LPDDR4 RAM

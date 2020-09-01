@@ -37,7 +37,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date} | <span className="post-tag">{post.frontmatter.tag}</span>
+            {post.frontmatter.date} |{" "}
+            <span className="post-tag">{post.frontmatter.tag}</span>
           </p>
         </header>
         <MDXRenderer>{post.body}</MDXRenderer>

@@ -7,15 +7,15 @@ tag: "Hardware"
 
 # The Idea
 
-For a quick weekend project, I wanted to see how feasible setting up a cloud gaming rig would be. Using EC2 from AWS and about \$10 USD, I was able to get a proof of concept set up and several games installed and running. I did run into a few issues that this post should address how to get around.
+For a quick weekend project, I wanted to see how feasible setting up a cloud gaming rig would be. Using EC2 from AWS and about 10 USD, I was able to get a proof of concept set up and several games installed and running. I did run into a few issues that this post should address how to get around.
 
 # Choosing an AMI
 
-An Amazon Machine Image is a virtual appliance used to create a virtual machine in EC2. These VMs span a variety of purposes and use a \*NIX or Windows operating system. You can create your own AMIs, use community-provided AMIs, or subscribe to one from the AWS Marketplace. It’s worth noting that the last option tacks on an additional hourly cost in addition to the base EC2 computing costs. In the interest of time, I opted to start with [a marketplace AMI specifically purposed for gaming](https://aws.amazon.com/marketplace/pp/Amazon-Web-Services-Microsoft-Windows-Server-2016-/B07612M5P7) with the requisite graphics drivers preinstalled.
+An Amazon Machine Image is a virtual appliance used to create a virtual machine in EC2. These VMs span a variety of purposes and use a *NIX or Windows operating system. You can create your own AMIs, use community-provided AMIs, or subscribe to one from the AWS Marketplace. It’s worth noting that the last option tacks on an additional hourly cost in addition to the base EC2 computing costs. In the interest of time, I opted to start with [a marketplace AMI specifically purposed for gaming](https://aws.amazon.com/marketplace/pp/Amazon-Web-Services-Microsoft-Windows-Server-2016-/B07612M5P7) with the requisite graphics drivers preinstalled.
 
 # Launching an Instance
 
-Per the AMI’s recommendation, I provisioned a `g3.4xlarge` EC2 instance. As you might expect from an instance that carries a nearly \$2 USD/hour price tag, the resources are quite powerful: 16 vCPUs, 122 GiB RAM, and an NVIDIA Tesla GPU. Most of the default settings should work, but be sure to provision an SSD larger than the default 30 GB given that most AAA games now are nearly twice that in size.
+Per the AMI’s recommendation, I provisioned a `g3.4xlarge` EC2 instance. As you might expect from an instance that carries a nearly 2 USD/hour price tag, the resources are quite powerful: 16 vCPUs, 122 GiB RAM, and an NVIDIA Tesla GPU. Most of the default settings should work, but be sure to provision an SSD larger than the default 30 GB given that most AAA games now are nearly twice that in size.
 
 Always remember to shut the server down when you’re not using it and verify that it’s instance state is listed as stopped in your EC2 console. I would highly recommend configuring a billing alarm to avoid surprising charges, as well as configuring your EC2 instance to stop when you shut down.
 
