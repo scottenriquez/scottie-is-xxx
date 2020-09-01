@@ -36,3 +36,109 @@ body a:focus {
     border-radius: 5px;
     padding: 2px;
 }
+
+.gatsby-highlight {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+    -webkit-overflow-scrolling: touch;
+}
+
+.gatsby-highlight pre[class*="language-"]::before {
+    background: black;
+    border-radius: 0 0 0.25rem 0.25rem;
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.025rem;
+    padding: 0.1rem 0.5rem;
+    position: absolute;
+    right: 1rem;
+    text-align: right;
+    top: 0;
+}
+
+.gatsby-highlight pre[class="language-javascript"]::before {
+    content: "JavaScript";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-jsx"]::before {
+    content: "JSX";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-typescript"]::before {
+    content: "TypeScript";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-swift"]::before {
+    content: "Swift";
+    background: #5dbcd2;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-shell"]::before {
+    content: "Shell";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-python"]::before {
+    content: "Python";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-java"]::before {
+    content: "Java";
+    background: #5dbcd2;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-markdown"]::before {
+    content: "Markdown";
+    background: #5c8464;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-html"]::before {
+    content: "HTML";
+    background: #5c8464;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-csharp"]::before {
+    content: "C#";
+    background: #5dbcd2;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-yaml"]::before {
+    content: "YAML";
+    background: #466c69;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-json"]::before {
+    content: "JSON";
+    background: #5c8464;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-sql"]::before {
+    content: "SQL";
+    background: #ba9282;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-graphql"]::before {
+    content: "GraphQL";
+    background: #ba9282;
+    color: white;
+}
