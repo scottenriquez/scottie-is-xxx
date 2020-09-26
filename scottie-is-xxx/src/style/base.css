@@ -15,6 +15,11 @@ p code {
     color: white !important;
 }
 
+li code {
+    background-color: #DE6E18 !important;
+    color: white !important;
+}
+
 body a {
     color: #DE6E18 !important;
     -webkit-transition: all .2s ease-in-out;
