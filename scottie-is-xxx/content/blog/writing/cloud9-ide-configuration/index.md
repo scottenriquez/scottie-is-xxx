@@ -13,7 +13,7 @@ tag: "Programming"
 Cloud9 makes it easy to declare an environment using CloudFormation, specify Git repositories to clone during the provisioning process, and share various custom settings such as themes and keybindings with developers. It's also a cheap option since the EC2 instance shuts itself down after a set period of time (with a default of 30 minutes).
 
 ## Initial Setup
-The first deployment fails unless a Cloud9 environment has been created from the Console due to an IAM service role created in the process (`!Sub arn:aws:iam::${AWS::AccountId}:role/service-role/AWSCloud9SSMAccessRole`). See more information [in the AWS documentation](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html#access-ec2-session).
+The first deployment fails unless a Cloud9 environment has been created from the Console due to an IAM service role created in the process (`service-role/AWSCloud9SSMAccessRole`). See more information [in the AWS documentation](https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html#access-ec2-session).
 
 ## AWS Resources Created
 - A Cloud9 environment with an `m5.large` instance EC2 instance
