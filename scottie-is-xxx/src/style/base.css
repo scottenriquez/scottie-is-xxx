@@ -130,6 +130,12 @@ body a:focus {
     color: white;
 }
 
+.gatsby-highlight pre[class="language-dockerfile"]::before {
+    content: "Dockerfile";
+    background: #466c69;
+    color: white;
+}
+
 .gatsby-highlight pre[class="language-json"]::before {
     content: "JSON";
     background: #5c8464;
@@ -138,6 +144,12 @@ body a:focus {
 
 .gatsby-highlight pre[class="language-editorconfig"]::before {
     content: "EditorConfig";
+    background: #5c8464;
+    color: white;
+}
+
+.gatsby-highlight pre[class="language-toml"]::before {
+    content: "TOML";
     background: #5c8464;
     color: white;
 }
@@ -152,4 +164,35 @@ body a:focus {
     content: "GraphQL";
     background: #ba9282;
     color: white;
+}
+
+blockquote {
+    background: #424242;
+    border-left: 10px solid #DE6E18;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "“" "”" "‘" "’";
+    color: white;
+}
+
+blockquote:before {
+    color: #DE6E18;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote:after {
+    color: #DE6E18;
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-left: 0.25em;
+    vertical-align: -0.4em;
+}
+
+blockquote p {
+    display: inline;
 }
