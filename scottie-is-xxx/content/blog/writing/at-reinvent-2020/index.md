@@ -5,78 +5,12 @@ description: "Thoughts and proofs-of-concepts from AWS re:Invent 2020."
 tag: "Programming"
 ---
 
-## EC2 macOS Instances
-The prospect of having macOS support for EC2 instances is exciting, but the current implementation has some severe limitations. First off, the instances are only available via [dedicated hosts](https://aws.amazon.com/ec2/dedicated-hosts/) with a minimum of a 24-hour tenancy. At an hourly rate of USD 1.083, it’s hard to imagine this being economically viable outside of particular use cases. The only AMIs available are 10.14 (Mojave) and 10.15 (Catalina), although Big Sur (11.0) is coming soon. There’s also no mention of support for AWS Workspaces yet, which I hope is a future addition given the popularity of macOS amongst engineers. Lastly, the new Apple M1 ARM-based chip isn’t available until next year.
-
-Despite the cost, I still want to get my hands on an instance. For now, I’ve hit a roadblock and have to increase my `mac1` dedicated host service quota. However, the following CLI command should allow you to provision an instance.
-
-```shell
-aws ec2 allocate-hosts --instance-type mac1.metal \
-  --availability-zone us-east-1a --auto-placement on \
-  --quantity 1 --region us-east-1
-aws ec2 run-instances --region us-east-1 \
-  --instance-type mac1.metal \
-  --image-id  ami-023f74f1accd0b25b \
-  --key-name $MY_KEY_PAIR --associate-public-ip-address
-```
-
-I also put together a CloudFormation template that includes a security group resource with a parameterized CIDR block.
-
-```yaml
-Parameters:
-  pAllowedIpCidr:
-    Type: String
-    AllowedPattern: '((\d{1,3})\.){3}\d{1,3}/\d{1,2}'
-    Default: '0.0.0.0/0'
-  pKeyPairName:
-    Type: AWS::EC2::KeyPair::KeyName
-  pVpcId:
-    Type: AWS::EC2::VPC::Id
-Resources:
-  rEc2SecurityGroup:
-    Type: AWS::EC2::SecurityGroup
-    Properties:
-      GroupDescription: macOS EC2 instance security group 
-      VpcId: !Ref pVpcId
-      SecurityGroupIngress: 
-      - CidrIp: !Ref pAllowedIpCidr
-        IpProtocol: tcp
-        FromPort: 22 
-        ToPort: 22
-      SecurityGroupEgress: 
-      - CidrIp: !Ref pAllowedIpCidr
-        IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22 
-  rDedicatedHost:
-    Type: AWS::EC2::Host
-    Properties: 
-      AutoPlacement: 'on'
-      AvailabilityZone: us-east-1a
-      InstanceType: mac1.metal
-  rEc2Instance:
-    Type: AWS::EC2::Instance
-    Properties:
-      BlockDeviceMappings: 
-      - DeviceName: /dev/disk0
-        Ebs: 
-          Encrypted: false
-          VolumeSize: 8
-          VolumeType: gp3
-      HostId: !Ref rDedicatedHost
-      ImageId: ami-023f74f1accd0b25b
-      InstanceType: mac1.metal
-      KeyName: !Ref pKeyPairName
-      SecurityGroupIds: 
-      - !Ref rEc2SecurityGroup
-      Tenancy: dedicated
-```
-
 ## Container Support for Lambda
 AWS Lambda supports Docker images up to 10GB in size. They've also provided base images for Lambda runtimes in the new [public ECR](https://gallery.ecr.aws/). For reference, the [base Node.js](https://gallery.ecr.aws/lambda/nodejs) 12 image is ~450MB. The Serverless Application Model (SAM) CLI has already been updated for container support. Instead of specifying a `--runtime`, engineers can now use a `--base-image`.
 
 ```shell
-sam --version #1.13.1
+sam --version 
+# 1.13.1
 sam init --base-image amazon/nodejs12.x-base
 ```
 
@@ -109,3 +43,145 @@ All of this made it seamless to deploy a container-based Lambda function with th
 > Performance is on-par with `zip` functions. We don't use Fargate; this is pure Lambda. We optimize the image when the function is created and cache the layers so the start-up time is pretty much the same as `zip` functions. 
 
 A fully-functional example can be found in this [GitHub repository](https://github.com/scottenriquez/aws-reinvent-2020-samples).
+
+## Introducing AWS Proton
+> AWS Proton is the first fully managed application deployment service for container and serverless applications. Platform engineering teams can use Proton to connect and coordinate all the different tools needed for infrastructure provisioning, code deployments, monitoring, and updates.
+
+During the announcement video, I wasn’t sure what the relationship between Proton and existing DevOps tools like CloudFormation and CodePipeline would be or even who the target audience is. To answer these questions, it makes sense to describe the problem that AWS is aiming to solve.
+
+Per the [Containers from the Couch stream](https://www.youtube.com/watch?v=DZJ8F6lKFuA), AWS understands that not all teams are able to staff with the requisite expertise on a single team (i.e., one team with software engineers, DevOps engineers, etc.). To mitigate this, companies often create leveraged teams to provide a specific set of services to other groups (i.e., a centralized platform team that serves multiple development teams). Leveraged teams have their own set of problems, including becoming a resource bottleneck, lack of adequate knowledge sharing mechanisms, and the inability to define and enforce standards.
+
+Proton aims to bridge this gap by offering tooling to standardize environments and services in templates across an organization. It also supports versioning so that environments and services are appropriately maintained. The expectation is that centralized platform teams can support these templates instead of individual solutions with heavily nuanced CloudFormation templates and DevOps pipelines. In Proton, environments are defined as sets of shared resources that individual services are deployed into. At this time, it’s not possible to deploy services without environments. The configurations for environments and services are intended to be utilized throughout the organization (although cross-account sharing isn’t available yet). Changes to templates are published as major and minor versions that are applied to individual instances. Unfortunately, auto-updates are not yet available. Schemas are used within these templates to define inputs for consumers.
+
+I haven’t been able to find much documentation on how to create templates other than [this GitHub repository](https://github.com/aws-samples/aws-proton-sample-templates/tree/main/lambda-crud-svc). The Lambda example there gives insight into the general structure from the `/environment` and `/service` directories. Both types are comprised of schemas, manifests, infrastructure, and pipelines.
+
+As mentioned above, schemas are used to capture inputs. In the sample from GitHub, the only shared environment resource is a DynamoDB table, and the time to live specification is parameterized.
+
+### `/schema.yaml`
+```yaml
+schema:
+  format:
+    openapi: "3.0.0"
+  environment_input_type: "EnvironmentInput"
+  types:
+    EnvironmentInput:
+      type: object
+      description: "Input properties for my environment"
+      properties:
+        ttl_attribute:
+          type: string
+          description: "Which attribute to use as the ttl attribute"
+          default: ttl
+          minLength: 1
+          maxLength: 100
+
+```
+
+Defining `/infrastructure` or `/pipeline` sections of the Proton template requires a manifest to describe how exactly to interpret the infrastructure as code. I can't find any documentation for the accepted values, but the template indicates that templating engines like [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) are supported and other infrastructure as code options like CDK may be planned for the future. 
+
+### `/manifest.yaml`
+```yaml
+infrastructure:
+  templates:
+    - file: "cloudformation.yaml"
+      engine: jinja
+      template_language: cloudformation
+```
+
+Lastly, a CloudFormation template is used to describe the infrastructure and DevOps automation like CodePipeline. Note the use of Jinja templating (specifically `environment.ttl_attribute`) to reference shared resources and input parameters. 
+
+### `/cloudformation.yaml`
+```yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: This environment holds a simple DDB table shared between services.
+Resources:
+  AppTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: hk
+          AttributeType: S
+        - AttributeName: rk
+          AttributeType: S
+      BillingMode: PAY_PER_REQUEST
+      KeySchema:
+        - AttributeName: hk
+          KeyType: HASH
+        - AttributeName: rk
+          KeyType: RANGE
+      GlobalSecondaryIndexes:
+        - IndexName: reverse
+          KeySchema:
+            - AttributeName: rk
+              KeyType: HASH
+            - AttributeName: hk
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL {% if environment.ttl_attribute|length %}
+      TimeToLiveSpecification:
+        AttributeName: "{{ environment.ttl_attribute }}"
+        Enabled: true
+{% endif %}
+```
+
+When the template is finished, compress the source code, push to S3, create a template, and publish it.
+```shell
+# create an environment template
+aws proton-preview create-environment-template \
+  --region us-east-1 \
+  --template-name "crud-api" \
+  --display-name "CRUD Environment" \
+  --description "Environment with DDB Table"
+# create a major version of the template (1)
+aws proton-preview create-environment-template-major-version \
+  --region us-east-1 \
+  --template-name "crud-api" \
+  --description "Version 1"
+# compress local source code
+tar -zcvf env-template.tar.gz environment/
+# copy to S3
+aws s3 cp env-template.tar.gz s3://proton-cli-templates-${account_id}/env-template.tar.gz --region us-east-1
+# delete local artifact
+rm env-template.tar.gz
+# create a minor version (0)
+aws proton-preview create-environment-template-minor-version \
+  --region us-east-1 \
+  --template-name "crud-api" \
+  --description "Version 1" \
+  --major-version-id "1" \
+  --source-s3-bucket proton-cli-templates-${account_id} \
+  --source-s3-key env-template.tar.gz
+# publish for users
+aws proton-preview update-environment-template-minor-version \
+  --region us-east-1 \
+  --template-name "crud-api" \
+  --major-version-id "1" \
+  --minor-version-id "0" \
+  --status "PUBLISHED"
+# instantiate an environment
+aws proton-preview create-environment \
+  --region us-east-1 \
+  --environment-name "crud-api-beta" \
+  --environment-template-arn arn:aws:proton:us-east-1:${account_id}:environment-template/crud-api \
+  --template-major-version-id 1 \
+  --proton-service-role-arn arn:aws:iam::${account_id}:role/ProtonServiceRole \
+  --spec file://specs/env-spec.yaml
+```
+
+The process for publishing and instantiating services is largely the same.
+
+## EC2 macOS Instances
+The prospect of having macOS support for EC2 instances is exciting, but the current implementation has some severe limitations. First off, the instances are only available via [dedicated hosts](https://aws.amazon.com/ec2/dedicated-hosts/) with a minimum of a 24-hour tenancy. At an hourly rate of USD 1.083, it’s hard to imagine this being economically viable outside of particular use cases. The only AMIs available are 10.14 (Mojave) and 10.15 (Catalina), although Big Sur (11.0) is coming soon. There’s also no mention of support for AWS Workspaces yet, which I hope is a future addition given the popularity of macOS amongst engineers. Lastly, the new Apple M1 ARM-based chip isn’t available until next year.
+
+Despite the cost, I still want to get my hands on an instance. For now, I’ve hit a roadblock and have to increase my `mac1` dedicated host service quota. However, the following CLI command should allow you to provision an instance.
+
+```shell
+aws ec2 allocate-hosts --instance-type mac1.metal \
+  --availability-zone us-east-1a --auto-placement on \
+  --quantity 1 --region us-east-1
+aws ec2 run-instances --region us-east-1 \
+  --instance-type mac1.metal \
+  --image-id  ami-023f74f1accd0b25b \
+  --key-name $MY_KEY_PAIR --associate-public-ip-address
+```
