@@ -5,7 +5,7 @@ description: "Thoughts and proofs-of-concepts from Visual Studio Live 2019 in Sa
 tag: "Programming"
 ---
 
-# Contents
+## Contents
 
 Visual Studio Live in San Diego was an amazing opportunity to learn about new Microsoft technology like Azure's artificial intelligence offerings and .NET Core 3.0. I attended some talks about leadership and Agile as well. I've put together several proofs of concept and documented what I learned about:
 
@@ -17,7 +17,7 @@ Visual Studio Live in San Diego was an amazing opportunity to learn about new Mi
 - The Dynamics of a Healthy Team
 - Goodhart's Law and the Hawthorne Effect
 
-# Azure Cognitive Services
+## Azure Cognitive Services
 
 The keynote this year was _AI for the Rest of Us_ and was delivered by Damian Brady. One of the core themes of the talk is that artificial intelligence and machine learning has become infinitely more accessible to programmers. Cloud providers have made their algorithms and statistical models available via easily consumable RESTful services. Much of the talk centered around a sample web application that consumed Azure's out-of-the-box computer vision and translation services to manage a company's inventory. One feature was identifying an item in a picture returned to a warehouse. Another was translating foreign customer reviews to English and analyzing their sentiment.
 
@@ -61,7 +61,7 @@ Console.WriteLine($"Sentiment Score: {sentimentResult.Score:0.00}");
 
 These are features that I would have previously told clients were completely out of the question given the complex mathematics and large data set required to train the models. Developers can now reap the benefits of machine learning with virtually no knowledge of statistics.
 
-# ASP.NET Core Health Checks and Inline Endpoints
+## ASP.NET Core Health Checks and Inline Endpoints
 
 .NET Core now supports built-in service health checks that can be easily configured in `Startup.cs` with a couple of lines of code.
 
@@ -114,7 +114,7 @@ app.UseEndpoints(endpoints =>
 
 Find the complete source code [here](https://github.com/scottenriquez/visual-studio-live-2019-endpoint-routing-and-healthchecks).
 
-# .NET Core CLI Tooling for AWS Lambda
+## .NET Core CLI Tooling for AWS Lambda
 
 AWS has built extensive CLI tooling and templating for building .NET Core serverless functions on Lambda. Assuming you have .NET Core installed and added to your `PATH`, you can run `dotnet new -i Amazon.Lambda.Templates` to install the Lambda templates and `dotnet tool install -g Amazon.Lambda.Tools` to install the Lambda tools. With a few commands, you can have a brand new .NET Core serverless function created, deployed to AWS, and invoke the function from the command line.
 
@@ -132,7 +132,7 @@ dotnet lambda deploy-function MyFunction --function-role role
 dotnet lambda invoke-function MyFunction --payload "Hello, world!"
 ```
 
-# .NET Core 3.0 Linux Worker with systemd Integration
+## .NET Core 3.0 Linux Worker with systemd Integration
 
 When I first wrote my first line of C# code back in 2012 as a young intern, .NET Core didn’t exist yet. At the time, .NET hadn't been open-sourced yet either. While powerful, .NET Framework was monolithic and only ran on Windows natively. Throughout college, I used Ubuntu and macOS and hadn't touched a Windows machine in years except for gaming. As a student, I fell in love with shells and preferred CLIs over cumbersome IDEs. While I remained a Unix enthusiast at home (macOS, Debian, and Manjaro), I felt that there was such a clear divide between this enterprise tool and the up-and-coming juggernaut in Node.js that was beginning to eat the server-side market share in an explosion of microscopic NPM packages.
 
@@ -178,7 +178,7 @@ sudo systemctl daemon-reload
 sudo systemctl start speedtest.service
 ```
 
-# Windows Subsystem for Linux 2 and Windows Terminal
+## Windows Subsystem for Linux 2 and Windows Terminal
 
 Though many of the talks at Visual Studio Live utilized Linux environments in Azure and AWS, none of the presenters developed in Linux during their demos. Instead they used WSL2 with Windows Terminal. In the latest Insiders build of Windows 10 (build 18917 or higher), Microsoft has shipped a Linux kernel too. This kernel has been specifically tuned for WSL2 and the performance is extremely solid. You can now also install various distros (i.e. Debian, Ubuntu) from the Microsoft Store and interact with them via a CLI.
 
@@ -188,7 +188,7 @@ You can also combine this with a preview of the new Windows Terminal. Which allo
 
 I installed Debian 10 plus my usual Linux tools like Vim and Zsh and found that the performance and usability were solid. I even went as far as to install and use some tools that aren't easy to use on Windows like Docker. I was able to run containers without any performance issues. Though all of these features and tools are still in preview, it shows Microsoft's commitment to Linux going forward. It also makes software development on Windows a lot more appealing in my opinion given that the majority of cloud infrastructure runs Linux.
 
-# The Dynamics of a Healthy Team
+## The Dynamics of a Healthy Team
 
 Though there were numerous exciting technical sessions throughout the week, some of my most valuable takeaways from the conference came from Angela Dugan's talks about leadership and metrics. Many of her points echoed much of the reading that I've done since transitioning to leadership about a year ago.
 
@@ -198,7 +198,7 @@ One way to help achieve this goal is to decrease the number of simultaneous proj
 
 The final takeaway I had was that it's not enough to merely identify cultural and personality differences. My team has taken multiple personality tests to understand how we all view the world differently. As a company, we've hosted numerous multicultural events to understand how culture impacts our work (see Outliers by Malcolm Gladwell). However, I feel that my team doesn't necessarily work any differently despite these efforts yet.
 
-# Goodhart's Law and the Hawthorne Effect
+## Goodhart's Law and the Hawthorne Effect
 
 During a fantastic talk on the dangers and benefits of collecting metrics, Angela introduced these two concepts that eloquently summed up some of the challenges my team has with identifying and reporting on quality metrics: Goodhart's Law and the Hawthorne Effect.
 

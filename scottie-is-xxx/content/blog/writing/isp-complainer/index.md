@@ -5,13 +5,13 @@ description: "Source code and technical documentation for a bot to tweet at my I
 tag: "Programming"
 ---
 
-# Motivation
+## Motivation
 
 I have long battled my internet service providers, and they have waged war on their customers for many years as well. Poor customer service, data caps with obscene overage charges, and many other issues have plagued me for years like many other Americans. Like many of these people, I’m stuck with only one viable option for a provider due to their monopolistic practices. Recently, I was forced to upgrade to a more expensive monthly plan after going over my data cap three times non-consecutively over a year and a half period. Rather than charging me the usual absurd per-gigabyte overage charge, I’m now stuck paying more per month for the remainder of my time with my ISP.
 
 "You’ll also get an increase in speed as well," the representative told me. Well, I’ve decided to hold my ISP accountable. Since my ISP was so diligent in tracking my overages, I’m going to be diligent in tracking the speeds that I’m getting. [Inspired by a post on Reddit](https://github.com/james-atkinson/speedcomplainer), I built an application to let my ISP know whenever I’m not getting my promised speeds, and I’m running it off of my Raspberry Pi. Here’s how you can use it too.
 
-# Raspberry Pi Setup
+## Raspberry Pi Setup
 
 Note that you do not need to run ISP Complainer on a Raspberry Pi. I built this application using Node.js, which can run on any operating system. I treat my Raspberry Pi like a little UNIX server and leave it running all the time. If you do not plan on running this on a Pi, you can skip to the next section.
 
@@ -22,11 +22,11 @@ Raspberry Pi uses ARM while most modern desktop processors use the x86 instructi
 
 **Update: the ARM binaries are now available on the [Node.js downloads](https://nodejs.org/en/download/) page.**
 
-# Local Setup
+## Local Setup
 
 Once Node.js and NPM are installed, fetch the code for ISP Complainer using the command `git clone git@github.com:scottenriquez/isp-complainer.git`. You can also access the repository [via the web interface](https://github.com/scottenriquez/isp-complainer). Once the repository had been cloned, navigate to the `/isp-complainer` root folder and install all dependencies using the `npm install` command. Then, start the web server with the command `node server.js` or `nodemon server.js`.
 
-# Configuration
+## Configuration
 
 Start by creating a Twitter API key. This will allow you to programmatically create tweets to your ISP. You can either create a new Twitter account like I did with @ISPComplainer or use your existing account. Note that in either case, you should treat your API key just like a username and password combination, because if exposed the person who intercepts it can take actions on your behalf. To create an API key, login to the Twitter application management tool and create a new app. Follow all of the steps and take note of the four keys that you’re provided with.
 
@@ -92,7 +92,7 @@ var environment = process.env.NODE_ENV || 'development';
 ...
 ```
 
-# Using the ISP Complainer Dashboard
+## Using the ISP Complainer Dashboard
 
 ![ISP Complainer](./isp-complainer-demo.png)
 
