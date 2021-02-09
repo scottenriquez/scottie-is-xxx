@@ -1,5 +1,5 @@
 ---
-title: "AWS re:Invent 2020 [In-Progress]" 
+title: "AWS re:Invent 2020" 
 date: "2020-12-01T22:12:03.284Z"
 description: "Thoughts and proofs-of-concepts from AWS re:Invent 2020."
 tag: "Programming"
@@ -10,6 +10,7 @@ tag: "Programming"
 - Introducing AWS Proton
 - EC2 macOS Instances
 - First-Class .NET 5 Support for Lambda
+- CloudShell
 
 ## Container Support for Lambda
 AWS Lambda supports Docker images up to 10GB in size. They've also provided base images for Lambda runtimes in the new [public ECR](https://gallery.ecr.aws/). For reference, the [base Node.js 12 image](https://gallery.ecr.aws/lambda/nodejs) is ~450MB. The Serverless Application Model (SAM) CLI has already been updated for container support. Instead of specifying a `--runtime`, engineers can now use the `--base-image` flag.
@@ -262,3 +263,9 @@ CMD ["HelloWorld::HelloWorld.Function::FunctionHandler"]
 ```
 
 A working example can be found [here](https://github.com/scottenriquez/aws-reinvent-2020-samples/tree/main/dotnet5-lambda).
+
+## CloudShell
+Finally catching up with both Azure and Google Cloud, AWS announced the launch of CloudShell:
+> AWS CloudShell is a browser-based shell that makes it easy to securely manage, explore, and interact with your AWS resources. CloudShell is pre-authenticated with your console credentials. Common development and operations tools are pre-installed, so no local installation or configuration is required. With CloudShell, you can quickly run scripts with the AWS Command Line Interface (AWS CLI), experiment with AWS service APIs using the AWS SDKs, or use a range of other tools to be productive. You can use CloudShell right from your browser and at no additional cost.
+
+Bash, Zsh, and PowerShell are available as shell options, and run commands can be customized in a typical `~/.bashrc` or `~/.zshrc` fashion. The free gigabyte of storage persists in the `$HOME` directory, making it easy to stash working files. While there are several runtimes like Node.js and Python installed alongside Vim, doing development in CloudShell is not as ergonomic as Cloud9 or a local machine. I can see this tool being useful when combined with something like container tabs in Firefox to interact with multiple AWS accounts from the browser instead of running commands in a local terminal with `--profile` flags.
