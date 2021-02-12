@@ -154,6 +154,12 @@ body a:focus {
     color: white;
 }
 
+.gatsby-highlight pre[class="language-xml"]::before {
+    content: "XML";
+    background: #5c8464;
+    color: white;
+}
+
 .gatsby-highlight pre[class="language-sql"]::before {
     content: "SQL";
     background: #ba9282;
