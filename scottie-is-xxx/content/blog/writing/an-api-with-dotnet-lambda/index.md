@@ -1,7 +1,7 @@
 ---
 title: ".NET 5 Docker Lambda Function with API Gateway Using CDK"
 date: "2021-02-11T22:12:03.284Z"
-description: "Building an API with full infrastructure as code support."
+description: "A step-by-step walkthrough for creating an API using .NET 5, CDK, Docker, and Lambda."
 tag: "Programming"
 ---
 
@@ -10,6 +10,9 @@ While infrastructure as code (IaC) has existed within the AWS ecosystem since 20
 - CDK allows the infrastructure and the CI/CD pipeline to be described as C#
 - CDK provides the ability to inject more robust logic than intrinsic functions in CFN and more modularity as well
 - Docker ensures that the Lambda functions run consistently across local development, builds, and production environments
+
+## GitHub Repository
+You can find a complete working example [here](https://github.com/scottenriquez/dotnet-5-lambda-api-cdk).
 
 ## Initializing the Project
 Ensure that .NET 5 and the latest version of CDK are installed. To create a skeleton, run these commands in the root directory:
