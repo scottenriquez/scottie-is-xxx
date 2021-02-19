@@ -1,5 +1,5 @@
 ---
-title: "[WIP] .NET 5 Docker Lambda Function with API Gateway Using CDK"
+title: ".NET 5 Docker Lambda Function with API Gateway Using CDK"
 date: "2021-02-11T22:12:03.284Z"
 description: "Building an API with full infrastructure as code support."
 tag: "Programming"
@@ -54,7 +54,7 @@ dotnet test LambdaApiSolution.sln
 First, add the Lambda CDK NuGet package to the CDK project.
 
 ```xml
-<PackageReference Include="Amazon.CDK.AWS.Lambda" Version="1.89.0" />
+<PackageReference Include="Amazon.CDK.AWS.Lambda" Version="1.90.0" />
 ```
 
 Then, create the Docker image and Lambda function using CDK constructors in `LambdaApiSolutionStack.cs`:
@@ -64,6 +64,7 @@ public class LambdaApiSolutionStack : Stack
 {
     internal LambdaApiSolutionStack(Construct scope, string id, IStackProps props = null) : base(scope, id, props)
     {
+        // this path is relative to the directory where CDK commands are run
         DockerImageCode dockerImageCode = DockerImageCode.FromImageAsset("src/LambdaApiSolution.DockerFunction/src/LambdaApiSolution.DockerFunction");
         DockerImageFunction dockerImageFunction = new DockerImageFunction(this, "LambdaFunction", new DockerImageFunctionProps()
         {
@@ -101,5 +102,71 @@ COPY --from=build-image /build/build_artifacts/ /var/task/
 CMD ["LambdaApiSolution.DockerFunction::LambdaApiSolution.DockerFunction.Function::FunctionHandler"]
 ```
 
-## Testing the Function
-...
+At this point, you can now deploy the changes with a `cdk deploy` command. The Lambda function can be tested via the AWS Console. The easiest way to do so is to navigate to the CloudFormation stack, click on the function resource, and then create an event with the string `"hello"` as the input. Note that this should not be a JSON object because the event handler's parameter accepts a single string.
+
+## Integrating API Gateway
+Add the following packages to the CDK project;
+
+```xml
+<PackageReference Include="Amazon.CDK.AWS.APIGatewayv2" Version="1.90.0" />
+<PackageReference Include="Amazon.CDK.AWS.APIGatewayv2.Integrations" Version="1.90.0" />
+```
+
+Next, you can add the API Gateway resources to the stack immediately after the `DockerImageFunction`:
+
+```csharp
+HttpApi httpApi = new HttpApi(this, "APIGatewayForLambda", new HttpApiProps()
+{
+    ApiName = "APIGatewayForLambda",
+    CreateDefaultStage = true,
+    CorsPreflight = new CorsPreflightOptions()
+    {
+        AllowMethods = new [] { HttpMethod.GET },
+        AllowOrigins = new [] { "*" },
+        MaxAge = Duration.Days(10)
+    }
+});
+```
+Then create a Lambda integration and a route for the function:
+
+```csharp
+LambdaProxyIntegration lambdaProxyIntegration = new LambdaProxyIntegration(new LambdaProxyIntegrationProps()
+{
+    Handler = dockerImageFunction,
+    PayloadFormatVersion = PayloadFormatVersion.VERSION_2_0
+});
+httpApi.AddRoutes(new AddRoutesOptions()
+{
+    Path = "/casing",
+    Integration = lambdaProxyIntegration,
+    Methods = new [] { HttpMethod.POST }
+});
+```
+
+I used `/casing` since the sample Lambda function returns an upper and lower case version of the input string. Finally, it's helpful to output the endpoint URL using a CFN output for testing.
+
+```csharp
+CfnOutput apiUrl = new CfnOutput(this, "APIGatewayURLOutput", new CfnOutputProps()
+{
+    ExportName = "APIGatewayEndpointURL",
+    Value = httpApi.ApiEndpoint
+});
+```
+
+With these changes to the resources, the Lambda function can be invoked by a `POST` request. The handler method parameters in `Function.cs` need to be updated for the request body to be passed in.
+
+```csharp
+public Casing FunctionHandler(APIGatewayProxyRequest apiGatewayProxyRequest, ILambdaContext context)
+{
+    string input = apiGatewayProxyRequest.Body;
+    return new Casing(input.ToLower(), input.ToUpper());
+}
+```
+
+After successfully deploying the changes, the function can be tested in two ways. The first way is through an HTTP client like Postman. Add a string to the body parameter of the `POST` request. This action tests the full integration of API Gateway as well as the Lambda function. To test via the Lambda Console, update the test event from before to match the `APIGatewayProxyRequest` parameter:
+
+```json
+{
+  "body": "hello"
+}
+```
