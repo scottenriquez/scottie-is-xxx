@@ -6,15 +6,15 @@ tag: "Programming"
 ---
 
 ## Overview
-Both AWS CDK and Terraform aim to solve a similar problem: alleviating some of the infrastructure management challenges with code. CDK supports several general-purpose languages, including C#, Python, and TypeScript, while Terraform uses its configuration language called HCL. While CDK can only create AWS resources, Terraform supports virtually every cloud provider, granting the ability to write code to deploy to multiple public clouds at once. Recently, Terraform and AWS announced a project called Terraform for CDK, aiming to grant the best of both worlds (i.e., support for GPLs, multi-cloud, etc.).
+Both AWS CDK and Terraform aim to solve a similar problem: alleviating some of the infrastructure management challenges with code. CDK supports several general-purpose languages, including C#, Python, and TypeScript, while Terraform uses its configuration language called HCL. While CDK can only create AWS resources, Terraform supports virtually every cloud provider, granting the ability to write code to deploy to multiple public clouds at once. Last year, [Terraform and AWS announced a project called Terraform for CDK](https://www.hashicorp.com/blog/cdk-for-terraform-enabling-python-and-typescript-support), aiming to grant the best of both worlds (i.e., support for GPLs, multi-cloud, etc.).
 
 ## Nuances and Limitations
 In addition to the programming language features of AWS CDK, there's a [construct library](https://docs.aws.amazon.com/cdk/api/latest/docs/aws-construct-library.html) with three levels:
 - L1 (level one) constructs are representations of CloudFormation resources
-- L2 (level two) constructs exist at a higher level and provide defaults and boilerplate to simplify the code
-- Patterns are the highest level and create many resources configured together wrapped in a single construct (e.g., Lambda RESTful API)
+- L2 (level two) constructs provide defaults and boilerplate to simplify the code
+- Patterns are the highest level and create many resources configured together wrapped in a single construct (e.g., [Lambda RESTful API](https://docs.aws.amazon.com/cdk/api/latest/docs/@aws-cdk_aws-apigateway.LambdaRestApi.html))
 
-While CDK for Terraform utilizes the [AWS construct programming model](https://aws.amazon.com/blogs/developer/introducing-the-cloud-development-kit-for-terraform-preview/), it does not share the same construct library as CDK. It's important to distinguish that CDK for Terraform only supports [Terraform providers](https://www.terraform.io/docs/language/providers/index.html).
+While CDK for Terraform utilizes the [AWS construct programming model](https://aws.amazon.com/blogs/developer/introducing-the-cloud-development-kit-for-terraform-preview/), it does not share the same construct library as CDK. It's important to distinguish that CDK for Terraform stacks only support [Terraform providers](https://www.terraform.io/docs/language/providers/index.html).
 
 ## GitHub Repository
 You can find a complete working example [here](https://github.com/scottenriquez/cdktf-alpha-csharp-testing).
