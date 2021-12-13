@@ -56,7 +56,7 @@ const Bio = () => {
           <strong>Scottie Enriquez</strong>
         </a>
         , a Houston-based cloud solution architect, software developer, and
-        volunteer high school teaching assistant. I currently work for <a href="https://aws.amazon.com/">AWS</a>. I also write an{" "}
+        volunteer high school teaching assistant. I currently work for <a href="https://aws.amazon.com/">Amazon Web Services</a>. I also write an{" "}
         <a href="https://micro.scottie.blog/">indie microblog</a>, a blog about{" "}
         <a href="https://scottie.codes/swift/">Swift</a>, and a blog for{" "}
         <a href="https://tryhard.football/">
