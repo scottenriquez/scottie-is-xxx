@@ -6,13 +6,13 @@ tag: "Programming"
 ---
 
 ## The Course and Companion
-[Rahul Nath](https://www.rahulpnath.com/) recently released a course called AWS Lambda For The .NET Developer on [Udemy](https://www.udemy.com/course/aws-lambda-dotnet/) and [Gumroad](https://rahulpnath.gumroad.com/l/aws-lambda-dot-net). I had a ton of fun going through the exercises and highly recommend purchasing a copy. While working through the material, I implemented the solutions as infrastructure as code using AWS CDK in C# and .NET 6. I also containerized most of the Lambda functions and wrote unit tests for both the functions and infrastructure. You can find all my [source code on GitHub](https://github.com/scottenriquez/rahul-nath-dotnet-lambda-course-cdk-companion).
+[Rahul Nath](https://www.rahulpnath.com/) recently released a course called AWS Lambda For The .NET Developer on [Udemy](https://www.udemy.com/course/aws-lambda-dotnet/) and [Gumroad](https://rahulpnath.gumroad.com/l/aws-lambda-dot-net). I had a ton of fun going through the exercises and highly recommend purchasing a copy. While working through the material, I implemented the solutions with infrastructure as code using AWS CDK in C# and .NET 6. I also containerized most of the Lambda functions and wrote unit tests for both the functions and infrastructure. You can find all my [source code on GitHub](https://github.com/scottenriquez/rahul-nath-dotnet-lambda-course-cdk-companion).
 
 ## Technology Decisions and Benefits
-While infrastructure as code (IaC) has existed within the AWS ecosystem since 2011, adoption has exploded in recent years due to the ability to manage large amounts of infrastructure at scale and standardize design across an organization. There are many options between CloudFormation (CFN), CDK, and Terraform for IaC and Serverless Application Model (SAM) and Serverless Framework for development. This article from A Cloud Guru quickly sums up the pros and cons of each IaC option. I choose this particular stack for some key reasons:
+While infrastructure as code (IaC) has existed within the AWS ecosystem for over a decade, adoption has exploded in recent years due to the ability to manage large amounts of infrastructure at scale and standardize design across an organization. There are many options including CloudFormation (CFN), CDK, and Terraform for IaC and Serverless Application Model (SAM) and Serverless Framework for development. [This article from A Cloud Guru](https://acloudguru.com/blog/engineering/cloudformation-terraform-or-cdk-guide-to-iac-on-aws) quickly sums up the pros and cons of each IaC option. I choose this particular stack for some key reasons:
+- Docker ensures that the Lambda functions run consistently across local development, builds, and production environments and simplifies dependency management
 - CDK allows the infrastructure to be described as C# instead of YAML, JSON, or HCL 
 - CDK provides the ability to inject more robust logic than intrinsic functions in CloudFormation and more modularity as well while still being an AWS-supported offering
-- Docker ensures that the Lambda functions run consistently across local development, builds, and production environments and simplifies dependency management
 - CDK supports unit testing
 
 Elaborating on the final point, here is an example unit test for ensuring that a DynamoDB table is destroyed when the stack is. The default behavior is for the table to be retained, leading to clutter and cost since this is a non-production project. This is an example how of IaC can be meaningfully tested:
@@ -41,10 +41,10 @@ To build and run this codebase, the following dependencies must be installed:
 - Node.js
 - Docker
 - AWS CDK
-- AWS CLI or credentials configured in `~/.aws/credentials`
+- Credentials configured in `~/.aws/credentials`(easily done with the AWS CLI)
 
 ## My Development Environment and CPU Architecture Considerations
-I developed all the code on my M1 MacBook Pro using JetBrains Rider. Because of my machine, it's worth noting that all of my Dockerfiles use ARM images (e.g., public.ecr.aws/lambda/dotnet:6-arm64) and are deployed to Graviton2 Lambda environments. I suspect that most folks reading this are using x86 Windows machines. Below is a modified Dockerfile illustrating the requisite changes:
+I developed all the code on my M1 MacBook Pro using JetBrains Rider. Because of my machine's ARM processor, it's key to note that all of my Dockerfiles use ARM images (e.g., `public.ecr.aws/lambda/dotnet:6-arm64`) and are deployed to [Graviton2 Lambda environments](https://aws.amazon.com/blogs/aws/aws-lambda-functions-powered-by-aws-graviton2-processor-run-your-functions-on-arm-and-get-up-to-34-better-price-performance/). I suspect that most folks reading this are using x86 Windows machines, so here is a modified Dockerfile illustrating the requisite changes:
 ```dockerfile
 # ARM
 # FROM public.ecr.aws/lambda/dotnet:6-arm64 AS base
@@ -98,7 +98,7 @@ DockerImageFunction sqsDockerImageFunction = new DockerImageFunction(this, "Lamb
 ```
 
 ## Using Cloud9
-AWS offers a browser-based IDE called Cloud9 that has nearly required dependencies installed. The IDE can be provisioned from the AWS Console or via infrastructure as code. Unfortunately, Cloud9 does not support Graviton-based instances yet. Below is a CloudFormation template for provisioning an environment:
+AWS offers a browser-based IDE called Cloud9 that has nearly all required dependencies installed. The IDE can be provisioned from the AWS Console or via infrastructure as code. Unfortunately, Cloud9 does not support Graviton-based instances yet. Below is a CloudFormation template for provisioning an environment with the source code pre-loaded:
 ```yaml
 Resources:
   rCloud9Environment:
@@ -110,11 +110,11 @@ Resources:
       InstanceType: m5.large	
       Name: Cloud9Environment
       Repositories: 
-        - PathComponent: /repos/aws-cloud9-environment
+        - PathComponent: /repos/rahul-nath-dotnet-lambda-course-cdk-companion
           RepositoryUrl: https://github.com/scottenriquez/rahul-nath-dotnet-lambda-course-cdk-companion.git
 ```
 
-Note that the instance must be deployed to a public subnet and does not have .NET 6 pre-installed. To do so, run the following commands:
+Note that the instance must be deployed to a public subnet. The Cloud9 AMI does not have .NET 6 pre-installed. To do so, run the following commands:
 ```shell
 sudo rpm -Uvh https://packages.microsoft.com/config/centos/7/packages-microsoft-prod.rpm
 sudo yum install dotnet-sdk-6.0
@@ -124,17 +124,15 @@ sudo yum install dotnet-sdk-6.0
 Each section of the course has a separate solution in the repository:
 - `FirstLambda` is a simple ZIP Lambda function that returns the uppercase version of a string 
 - `LambdaWithDynamoDb` is a simple Lambda function that queries a DynamoDB table
-- `LambdaWithApiGateway` is a full CRUD app on top of a DynamoDB table
-- `LambdaTriggers` are Lambda functions triggered by SNS and SQS
-
-To deploy the infrastructure, navigate to the corresponding folder and use the CDK CLI like so:
-```shell
-cd LambdaTriggers
-cdk deploy
-```
+- `LambdaWithApiGateway` is a full CRUD app using DynamoDB for storage 
+- `LambdaTriggers` are event-driven Lambda functions triggered by SNS and SQS
 
 Each solution is structured in the same way. I generated the CDK app using the CLI and used the Lambda templates to create my functions like so:
 ```shell
+# create the CDK application
+# the name is derived from the directory
+# this snippet assumes the directory is called Lambda
+cdk init app --language csharp
 # install the latest version of the .NET Lambda templates
 dotnet new -i Amazon.Lambda.Templates
 cd src/
@@ -147,7 +145,7 @@ dotnet sln add Lambda.DockerFunction/test/Lambda.DockerFunction.Tests/Lambda.Doc
 dotnet test Lambda.sln
 ```
 
-Each Lambda function has projects for the handler code and unit tests. All CDK code for infrastructure resides in the corresponding `*Stack.cs` file. Here is an example IaC for a Lambda function triggered by SQS:
+Each Lambda function has projects for the handler code and unit tests. All CDK code for infrastructure resides in the corresponding `*Stack.cs` file. Here is some example IaC for a Lambda function triggered by SQS:
 ```csharp
 public class LambdaTriggersStack : Stack
 {
@@ -202,8 +200,15 @@ public class LambdaTriggersStack : Stack
 }
 ```
 
-## AWS Account Cleanup
-To destroy resources, run the command:
+## Resource Deployment
+To deploy the infrastructure, navigate to the corresponding section folder and use the CDK CLI like so:
+```shell
+cd LambdaTriggers
+cdk deploy
+```
+
+## Resource Cleanup
+To destroy resources, run this command in the same directory:
 ```shell
 cdk destroy
 ```
