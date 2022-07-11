@@ -36,8 +36,7 @@ const Bio = () => {
                 </a>
                 , a cloud solution architect, software developer, and
                 occasional nomad. I currently live in Los Angeles, California and work for <a href="https://aws.amazon.com/">Amazon Web Services</a>. I also write an{" "}
-                <a href="https://micro.scottie.blog/">indie microblog</a>, a blog about{" "}
-                <a href="https://scottie.codes/swift/">Swift</a>, and a blog for{" "}
+                <a href="https://micro.scottie.blog/">indie microblog</a> and a blog for{" "}
                 <a href="https://tryhard.football/">
                     my fantasy football league
                 </a>
