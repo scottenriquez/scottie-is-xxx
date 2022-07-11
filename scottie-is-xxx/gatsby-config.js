@@ -102,13 +102,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.nodes.map(node => {
+              return allMdx.edges.map(node => {
                 return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  description: node.node.excerpt,
+                  date: node.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.node.html }],
                 })
               })
             },
@@ -118,11 +118,12 @@ module.exports = {
                   edges {
                     node {
                       excerpt
+                      html
                       fields {
                         slug
                       }
                       frontmatter {
-                        date(formatString: "MMMM DD, YYYY")
+                        date
                         title
                         description
                         tag
