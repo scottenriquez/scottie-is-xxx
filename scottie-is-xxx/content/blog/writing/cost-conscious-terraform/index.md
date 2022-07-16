@@ -5,7 +5,7 @@ description: "A deployment pipeline that alerts Terraform developers of cost inc
 tag: "Programming"
 ---
 ## Solution Overview
-My current role focuses on every facet of AWS cost optimization for customers. Much of this entails helping to remediate existing infrastructure and usage. Many customers ask how they can shift left on cloud costs, like they typically do with security. Ultimately cost consciousness needs to be injected into every aspect of the engineering lifecycle: from the initial architecture design to implementation and upkeep.
+My current role focuses on every facet of AWS cost optimization for customers. Much of this entails helping to remediate existing infrastructure and usage. Many customers ask how they can shift left on cloud costs, like they typically do with security. Ultimately, cost consciousness needs to be injected into every aspect of the engineering lifecycle: from the initial architecture design to implementation and upkeep.
 
 One such aspect is providing developers visibility into the impact of their code changes. Infrastructure as code has made it easy to deploy cloud resources faster and at larger scale than ever before, but this means that cloud bills can also scale up quickly in parallel. This solution aims to demonstrate how to integrate a tool like [Infracost](https://www.infracost.io/) into a deployment pipeline to bring cost impact to the pull request process and code review discussion. The source code is [hosted on GitHub](https://github.com/scottenriquez/infracost-cdk-pipeline).
 
@@ -99,7 +99,7 @@ resource_usage:
       monthly_tier_1_requests: 1000 
 ```
 
-Commit these changes to the `feature` branch and open a pull request. Doing so will trigger the CodeBuild project that computes the cost delta and publishes the payload to the SNS topic if the amount increases. Infracost generates a JSON file with the changes (abridged below):
+Commit these changes to the `feature` branch and open a pull request. Doing so will trigger the CodeBuild project that computes the cost delta and publishes the payload to the SNS topic if the amount increases. Assuming you subscribed to the SNS topic, some JSON should be in your inbox. Here's an abridged example:
 ```json
 {
 	"version": "0.2",
