@@ -1,13 +1,13 @@
 ---
-title: Cost-Conscious Terraform Development Using Infracost and AWS Developer Tools 
+title: Writing Cost-Conscious Terraform Using Infracost and AWS Developer Tools 
 date: "2022-07-16T22:12:03.284Z"
 description: "A deployment pipeline that alerts Terraform developers of cost increases."
 tag: "Programming"
 ---
 ## Solution Overview
-My current role focuses on every facet of AWS cost optimization for customers. Much of this entails helping to remediate existing infrastructure and usage. Many customers ask how they can shift left on cloud costs, like they typically do with security. Ultimately, cost consciousness needs to be injected into every aspect of the engineering lifecycle: from the initial architecture design to implementation and upkeep.
+My current role focuses on every facet of AWS cost optimization. Much of this entails helping to remediate existing infrastructure and usage. Many customers ask how they can shift left on cloud costs, like they do with security. Ultimately, cost consciousness needs to be injected into every aspect of the engineering lifecycle: from the initial architecture design to implementation and upkeep.
 
-One such aspect is providing developers visibility into the impact of their code changes. Infrastructure as code has made it easy to deploy cloud resources faster and at larger scale than ever before, but this means that cloud bills can also scale up quickly in parallel. This solution aims to demonstrate how to integrate a tool like [Infracost](https://www.infracost.io/) into a deployment pipeline to bring cost impact to the pull request process and code review discussion. The source code is [hosted on GitHub](https://github.com/scottenriquez/infracost-cdk-pipeline).
+One such aspect is providing developers visibility into the impact of their code changes. Infrastructure as code has made it easy to deploy cloud resources faster and at larger scale than ever before, but this means that cloud bills can also scale up quickly in parallel. This solution demonstrates how to integrate [Infracost](https://www.infracost.io/) into a deployment pipeline to bring cost impact to the pull request process and code review discussion. The source code is [hosted on GitHub](https://github.com/scottenriquez/infracost-cdk-pipeline).
 
 ## Solution Architecture 
 ![Diagram](infracost.png)
@@ -24,27 +24,27 @@ This solution deploys several resources:
 ## Preparing Your Development Environment 
 While this solution is for writing, deploying, and analyzing Terraform HCL syntax, I wrote the infrastructure code for the deployment pipeline and dependent resources using AWS CDK, which is my daily driver for infrastructure as code. Of course, the source code could be rewritten using Terraform or [CDK for Terraform](https://www.terraform.io/cdktf), but I used CDK for the sake of a quick prototype that only creates AWS resources (i.e., no need for additional providers). In addition, Infracost currently only supports Terraform, but there are [plans for CloudFormation and CDK](https://www.infracost.io/docs/supported_resources/overview/) in the future.
 
-The following dependencies are required:
+The following dependencies are required for the application:
 - An AWS account
 - Node.js
+- Terraform
 - [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html)
 - [An Infracost API key](https://www.infracost.io/docs/)
 - [Source code](https://github.com/scottenriquez/infracost-cdk-pipeline)
 
-Rather than installing CDK on your local machine, you can alternatively use the following CloudFormation template to create a Cloud9 environment with all dependencies pre-installed and the GitHub repository cloned:
+Rather than installing Node.js, CDK, Terraform, and all other dependencies on your local machine, you can alternatively create a [Cloud9 IDE](https://aws.amazon.com/cloud9/) with these pre-installed via the Console or with CloudFormation:
 ```yaml
 Resources:
   rCloud9Environment:
     Type: AWS::Cloud9::EnvironmentEC2
     Properties:
       AutomaticStopTimeMinutes: 30
-      ConnectionType: CONNECT_SSM
+      ConnectionType: CONNECT_SSH 
       Description: Environment for writing and deploying CDK 
       InstanceType: t2.micro	
       Name: InfracostCDKPipelineCloud9Environment
-      Repositories: 
-        - PathComponent: /repos/infracost-cdk-pipeline
-          RepositoryUrl: https://github.com/scottenriquez/infracost-cdk-pipeline.git
+      # https://docs.aws.amazon.com/cloud9/latest/user-guide/vpc-settings.html#vpc-settings-create-subnet
+      SubnetId: subnet-EXAMPLE 
 ```
 
 ## Installation, Deployment, and Configuration
@@ -183,10 +183,10 @@ const pullRequestCodeBuildProject = new codebuild.Project(this, 'TerraformPullRe
 More advanced notification logic, such as using the percentage increase for an alert threshold, could be implemented to minimize noise for developers. Additionally, offloading the logic to a Lambda function and invoking it via the CLI would allow for more robust and testable logic than a simple Shell script.
 
 ## Conclusion
-Technology alone will not resolve all cost optimization challenges. However, integrating cost analysis into code reviews is integral to shaping culture. It is much better to find and address cost spikes before infrastructure is deployed. Seeing a massive number from `infracost diff` is scary, but seeing it in Cost Explorer is scarier.
+Technology alone will not resolve all cost optimization challenges. However, integrating cost analysis into code reviews is integral to shaping a cost-conscious culture. It is much better to find and address cost spikes before infrastructure is deployed. Seeing a massive number from `infracost diff` is scary, but seeing it in Cost Explorer is far scarier.
 
 ## Cleanup
-If you deployed resources via the deployment pipeline, be sure to either run the `DestroyTerraform` CodeBuild project or run:
+If you deployed resources via the deployment pipeline, be sure to either use the `DestroyTerraform` CodeBuild project or run:
 ```shell
 # set the bucket name variable or replace with a value
 # the bucket name nomenclature is 'terraform-state-' followed by a UUID
@@ -199,6 +199,8 @@ To destroy the pipeline itself run:
 ```shell
 cdk destroy
 ```
+
+If you spun up a Cloud9 environment, be sure to delete that as well.
 
 ## Disclaimer
 At the time of writing this blog post, I currently work for Amazon Web Services. The opinions and views expressed here are my own and not the views of my employer.
