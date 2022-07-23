@@ -17,6 +17,7 @@ const Bio = () => {
                 width={50}
                 height={50}
                 quality={95}
+                loading="eager"
                 alt="Profile picture"
                 style={{
                     marginRight: rhythm(1 / 2),
