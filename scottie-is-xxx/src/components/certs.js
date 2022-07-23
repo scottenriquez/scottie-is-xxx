@@ -17,7 +17,7 @@ const Certs = () => {
                         src="../images/aws-certified-cloud-practitioner.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="AWS Certified Cloud Practitioner"
                         loading="eager"
                     />
@@ -29,7 +29,7 @@ const Certs = () => {
                         src="../images/aws-certified-solutions-architect-associate.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="AWS Certified Solution Architect - Associate"
                         loading="eager"
                     />
@@ -41,7 +41,7 @@ const Certs = () => {
                         src="../images/aws-certified-developer-associate.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="AWS Certified Developer - Associate"
                         loading="eager"
                     />
@@ -53,7 +53,7 @@ const Certs = () => {
                         src="../images/aws-certified-sysops-administrator-associate.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="AWS Certified SysOps Administrator - Associate"
                         loading="eager"
                     />
@@ -65,7 +65,7 @@ const Certs = () => {
                         src="../images/aws-certified-devops-engineer-professional.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="AWS Certified DevOps Engineer - Professional"
                         loading="eager"
                     />
@@ -77,20 +77,8 @@ const Certs = () => {
                         src="../images/hashicorp-certified-terraform-associate.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="HashiCorp Certified: Terraform Associate"
-                        loading="eager"
-                    />
-                </a>
-                <a href="https://www.credly.com/badges/ca27c82b-a97a-4cf1-b983-d59f521dc324/public_url">
-                    <StaticImage
-                        layout="constrained"
-                        formats={["auto", "webp", "avif"]}
-                        src="../images/microsoft-certified-azure-fundamentals.png"
-                        width={100}
-                        height={100}
-                        quality={50}
-                        alt="Microsoft Certified: Azure Fundamentals"
                         loading="eager"
                     />
                 </a>
@@ -101,7 +89,7 @@ const Certs = () => {
                         src="../images/microsoft-certified-azure-developer-associate.png"
                         width={100}
                         height={100}
-                        quality={50}
+                        quality={95}
                         alt="Microsoft Certified: Azure Developer Associate"
                         loading="eager"
                     />
