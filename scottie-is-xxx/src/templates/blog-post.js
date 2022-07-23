@@ -8,6 +8,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons"
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
+import Certs from "../components/certs";
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
     const post = data.mdx
@@ -49,6 +50,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 />
                 <footer>
                     <Bio />
+                    <Certs />
                 </footer>
             </article>
 

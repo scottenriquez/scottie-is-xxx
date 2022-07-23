@@ -11,7 +11,7 @@ For a quick weekend project, I wanted to see how feasible setting up a cloud gam
 
 ## Choosing an AMI
 
-An Amazon Machine Image is a virtual appliance used to create a virtual machine in EC2. These VMs span a variety of purposes and use a *NIX or Windows operating system. You can create your own AMIs, use community-provided AMIs, or subscribe to one from the AWS Marketplace. It’s worth noting that the last option tacks on an additional hourly cost in addition to the base EC2 computing costs. In the interest of time, I opted to start with [a marketplace AMI specifically purposed for gaming](https://aws.amazon.com/marketplace/pp/Amazon-Web-Services-Microsoft-Windows-Server-2016-/B07612M5P7) with the requisite graphics drivers preinstalled.
+An Amazon Machine Image is a virtual appliance used to create a virtual machine in EC2. These AMIs span a variety of purposes and use a *NIX or Windows operating system. You can create your own AMIs, use community-provided AMIs, or subscribe to one from the AWS Marketplace. It’s worth noting that the last option tacks on an additional hourly cost in addition to the base EC2 computing costs. In the interest of time, I opted to start with [a marketplace AMI specifically purposed for gaming](https://aws.amazon.com/marketplace/pp/Amazon-Web-Services-Microsoft-Windows-Server-2016-/B07612M5P7) with the requisite graphics drivers preinstalled.
 
 ## Launching an Instance
 
@@ -39,7 +39,7 @@ After doing all of the setup above, I received D3D errors from every game that I
 
 I was able to get solid performance on both my MacBook’s Retina Display as well as a standard 1080p monitor. Never having done anything graphically intensive on a Windows VM, I wasn’t aware that you can’t change your resolution from the VM itself. Rather, configuration needs to be done via your RDP client. As you probably expect, these settings are heavily dependent on the display that you’re playing on.
 
-It’s also worth noting that unless you provision an Elastic IP Address, your public hostname and IP will change every time you start and stop the EC2 instance. This means that if you don’t have a static IP address in place, you’ll need to either download a fresh .rdp file or update your hostname in the RDP client constantly.
+It’s also worth noting that unless you provision an Elastic IP Address, your public hostname and IP will change every time you start and stop the EC2 instance. This means that if you don’t have a static IP address in place, you’ll need to either download a fresh `.rdp` file or update your hostname in the RDP client constantly.
 
 ## Latency and Limitations
 
