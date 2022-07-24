@@ -5,8 +5,8 @@ import { useD3 } from '../hooks/useD3';
 function BarChart({ data, xAxisName, yAxisName }) {
     const ref = useD3(
         (svg) => {
-            const height = 500;
-            const width = 793;
+            const height = 400;
+            const width = 400;
             const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
             const x = d3
@@ -71,8 +71,7 @@ function BarChart({ data, xAxisName, yAxisName }) {
         <svg
             ref={ref}
             style={{
-                height: 500,
-                width: '100%',
+                height: 400,
                 marginRight: '0px',
                 marginLeft: '0px',
             }}
