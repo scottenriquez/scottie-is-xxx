@@ -6,7 +6,7 @@ function BarChart({ data, xAxisName, yAxisName }) {
     const ref = useD3(
         (svg) => {
             const height = 400;
-            const width = 400;
+            const width = 800;
             const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
             const x = d3
@@ -71,10 +71,12 @@ function BarChart({ data, xAxisName, yAxisName }) {
         <svg
             ref={ref}
             style={{
-                height: 400,
+                height: '100%',
+                width: '100%',
                 marginRight: '0px',
                 marginLeft: '0px',
             }}
+            viewBox={"0 0 800 400"}
         >
             <g className='plot-area' />
             <g className='x-axis' />
