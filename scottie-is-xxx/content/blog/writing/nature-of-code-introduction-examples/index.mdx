@@ -5,6 +5,7 @@ description: "A companion for the introduction section of Daniel Shiffman's book
 tag: "Programming"
 ---
 import RandomNormalDistribution from '../../../../src/components/nature-of-code/introduction/randomNormalDistribution'
+import BellCurve from '../../../../src/components/nature-of-code/introduction/bellCurve'
 
 ## About the Book
 Recently, I started reading a fantastic book called The Nature of Code by Daniel Shiffman. From the [Amazon link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802):
@@ -101,7 +102,7 @@ public void RandomWalk(bool weightedRight)
 | --------------------------------------- | ------------------------------------- |
 | ![](./random-walk.jpg)                  | ![](./random-walk-weighted-right.jpg) |
 
-## [Random Numbers with Normal Distribution](https://github.com/scottenriquez/nature-of-code/tree/main/introduction-02-probability)
+## [Random Numbers with Normal Distribution](https://github.com/scottenriquez/nature-of-code/blob/main/introduction-02-probability/probability/src/components/sections/randomNormalDistribution.js)
 This example plots random numbers generated with a normal distribution (i.e., no specific weights).
 
 ```javascript
@@ -119,6 +120,74 @@ const generateRandomData = () => {
 }
 ```
 
-<div style={{  }}>
+<div>
     <RandomNormalDistribution />
+</div>
+
+## [Bell Curve (Frequency Distribution)](https://github.com/scottenriquez/nature-of-code/blob/main/introduction-02-probability/probability/src/components/sections/bellCurve.js)
+This example shows how to create a bell curve for one thousand monkeys ranging in height from 200 to 300 pixels with a normal distribution. First, generate the data.
+
+```javascript
+const generateHeightData = () => {
+	const data = [];
+	const datasetSize = 1000;
+	const baseHeight = 200;
+	const maxRandomValue = 100;
+	for(let index = 0; index < datasetSize; index++) {
+		data[index] = {
+			index: index,
+			// generate a height between 200 and 300
+			value: baseHeight + (Math.floor(Math.random() * maxRandomValue))
+		}
+	}
+	return data.sort((current, next) => { return current.value - next.value });
+}
+```
+
+Next, compute the standard deviation.
+
+```javascript
+const computeMean = (array) => {
+	let sum = 0;
+	for(let index = 0; index < array.length; index++) {
+		sum += array[index].value;
+	}
+	return sum / array.length;
+}
+
+const computeStandardDeviation = (data, mean) => {
+	let sumSquareDeviation = 0;
+	for(let index = 0; index < data.length; index++) {
+		sumSquareDeviation += Math.pow(data[index].value - mean, 2);
+	}
+	return Math.sqrt(sumSquareDeviation / data.length);
+}
+```
+
+Lastly, group each monkey by standard deviations for the x-axis and plot the frequency counts as the y-axis.
+
+```javascript
+const generateHeightBellCurve = () => {
+	const data = generateHeightData();
+	const meanHeight = computeMean(data);
+	const standardDeviationHeight = computeStandardDeviation(data, meanHeight);
+	const bellCurveData = {};
+	for(let index = 0; index < data.length; index++) {
+		data[index].standardDeviations = Math.round((data[index].value - meanHeight) / standardDeviationHeight);
+		if(!bellCurveData[data[index].standardDeviations]) {
+			bellCurveData[data[index].standardDeviations] = {
+				standardDeviations: data[index].standardDeviations,
+				count: 1
+			}
+		}
+		else {
+			bellCurveData[data[index].standardDeviations].count++;
+		}
+	}
+	return Object.keys(bellCurveData).map(key => bellCurveData[key]).sort((one, other) => { return one.standardDeviations - other.standardDeviations });
+}
+```
+
+<div>
+    <BellCurve />
 </div>
