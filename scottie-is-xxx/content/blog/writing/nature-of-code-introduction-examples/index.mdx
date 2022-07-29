@@ -9,15 +9,15 @@ import RandomNormalDistribution from '../../../../src/components/nature-of-code/
 import BellCurve from '../../../../src/components/nature-of-code/introduction/bellCurve'
 
 ## About the Book
-Recently, I started reading a fantastic book called The Nature of Code by Daniel Shiffman. From the [Amazon link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802):
+Recently, I started reading a fantastic book called *The Nature of Code* by Daniel Shiffman. From the [Amazon link](https://www.amazon.com/Nature-Code-Simulating-Natural-Processing/dp/0985930802):
 > How can we capture the unpredictable evolutionary and emergent properties of nature in software? How can understanding the mathematical principles behind our physical world help us to create digital worlds? This book focuses on a range of programming strategies and techniques behind computer simulations of natural systems, from elementary concepts in mathematics and physics to more advanced algorithms that enable sophisticated visual results. Readers will progress from building a basic physics engine to creating intelligent moving objects and complex systems, setting the foundation for further experiments in generative design.
 
-Daniel implements numerous examples using a programming language called [Processing](https://processing.org). Instead, I decided to write my own versions using GPLs (complete with blog posts and READMEs).
+Daniel implements numerous examples using a programming language called [Processing](https://processing.org). Instead, I decided to write my own versions using JavaScript, React, and D3. For this blog series, I intend to implement my learnings from each chapter. This first post covers the introduction section of the book.
 
 ## Random Walk
-A random walk traces a path through a Cartesian plane going in a random direction with each step (i.e., one pixel). The walks are built by plotting individual pixels as rectangles in a scalable vector graphic (SVG). The program creates a purple pixel at `(200, 400)`. The `walk` function chooses a random direction, paints another white pixel, and updates the internal state for current coordinates.
+A random walk traces a path through a Cartesian plane going in a random direction with each step (i.e., one pixel). The walks are built by plotting individual pixels as rectangles in Scalable Vector Graphics (SVGs). The program starts at `(200, 400)` for each walk. The `walk` function chooses a random direction and updates the internal state to indicate that a step has been taken.
 ```javascript
-walk() {
+walk(pixels) {
     const step = Math.floor(Math.random() * 4);
     switch (step) {
         case 0:
@@ -33,7 +33,7 @@ walk() {
             this.coordinates.y--;
             break;
     }
-    this.state.pixels.push({
+    pixels.push({
         x: this.coordinates.x,
         y: this.coordinates.y
     });
@@ -42,7 +42,7 @@ walk() {
 
 The `walkWeightedRight` function illustrates the same functionality but with a non-uniform distribution. In this code, there's a 70% chance of moving to the right.
 ```javascript
-walkWeightedRight() {
+walkWeightedRight(pixels) {
     const step = Math.floor(Math.random() * 10);
     if (step <= 6) {
         this.coordinates.x++;
@@ -56,29 +56,36 @@ walkWeightedRight() {
     else {
         this.coordinates.y--;
     }
-    this.state.pixels.push({
+    pixels.push({
         x: this.coordinates.x,
         y: this.coordinates.y
     });
 }
 ```
 
-The `RandomWalk` function calls the `Walk` or `WalkWeightedRight` function until an edge is hit. The SVG is the rendered.
+The `randomWalk` function calls the `walk` or `walkWeightedRight` function until an edge is hit. The SVG is then rendered based on the pixels stored in memory representing the path.
 ```javascript
 randomWalk(weightedRight) {
-    while (this.coordinates.x < width - 1 && this.coordinates.x > 0 && this.coordinates.y < height - 1 &&
-    this.coordinates.y > 0)
-    {
-        if (weightedRight) {
-            this.walkWeightedRight();
+    return new Promise((resolve) => {
+        const pixels = [];
+        while (this.coordinates.x < width - 1 && this.coordinates.x > 0 && this.coordinates.y < height - 1 &&
+        this.coordinates.y > 0)
+        {
+            if (weightedRight) {
+                this.walkWeightedRight(pixels);
+            }
+            else {
+                this.walk(pixels);
+            }
         }
-        else {
-            this.walk();
-        }
-    }
+        resolve({
+            isRendering: false,
+            pixels: pixels
+        });
+    });
 }
 ```
-Note that generate numerous random walks in rapid succession may cause the browser to crash given the number of pixels.
+The default random walk refresh functionality is disabled for stability due to the high volume of pixels and inefficiency of the algorithm. However, the other examples allow for creating a new SVG for a fresh random data set.
 <div>
     <RandomWalk weightedRight={false} buttonText={'Random Walk'}/>
 </div>
@@ -110,7 +117,7 @@ const generateRandomData = () => {
 </div>
 
 ## Bell Curve (Frequency Distribution)
-This example shows how to create a bell curve for one thousand monkeys ranging in height from 200 to 300 pixels with a normal distribution. First, generate the data.
+This example shows how to create a bell curve for one thousand monkeys ranging in height from 200 to 300 pixels with a normal distribution. First, the code generates the data.
 
 ```javascript
 const generateHeightData = () => {
@@ -129,7 +136,7 @@ const generateHeightData = () => {
 }
 ```
 
-Next, compute the standard deviation.
+Next, the code computes the standard deviation.
 
 ```javascript
 const computeMean = (array) => {
@@ -149,7 +156,7 @@ const computeStandardDeviation = (data, mean) => {
 }
 ```
 
-Lastly, group each monkey by standard deviations for the x-axis and plot the frequency counts as the y-axis.
+Lastly, the code groups each monkey by standard deviations for the x-axis and plots the frequency counts for the y-axis.
 
 ```javascript
 const generateHeightBellCurve = () => {
