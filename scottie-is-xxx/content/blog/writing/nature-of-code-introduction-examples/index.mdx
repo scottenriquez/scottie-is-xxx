@@ -13,21 +13,7 @@ Recently, I started reading a fantastic book called The Nature of Code by Daniel
 
 Daniel implements numerous examples using a programming language called [Processing](https://processing.org). Instead, I decided to write my own versions using GPLs (complete with blog posts and READMEs).
 
-## Running My Code Examples
-The source code can be found on [GitHub](https://github.com/scottenriquez/nature-of-code). All examples are built using C# on .NET 6 or JavaScript using React and D3. The folders correspond to chapters and exercises in the book. The prefix consists of a chapter name (e.g., `introduction-`) followed by an exercise number and name (e.g., `01-random-walk`).
-
-For .NET code, navigate to the folder with the `.sln` file and run with:
-```shell
-dotnet run
-```
-
-For React, navigate to the folder with `package.json` and run with:
-```shell
-npm install
-npm start
-```
-
-## [Random Walk](https://github.com/scottenriquez/nature-of-code/tree/main/introduction-01-random-walk)
+## Random Walk
 A random walk traces a path through a Cartesian plane going in a random direction with each step (i.e., one pixel). The base image is created in memory as a 400 by 400 black square. The program creates a white pixel at `(200, 200)`. The `Walk` function chooses a random direction, paints another white pixel, and updates the `Walker` object's internal state for current coordinates.
 ```csharp
 private void Walk()
@@ -102,7 +88,7 @@ public void RandomWalk(bool weightedRight)
 | --------------------------------------- | ------------------------------------- |
 | ![](./random-walk.jpg)                  | ![](./random-walk-weighted-right.jpg) |
 
-## [Random Numbers with Normal Distribution](https://github.com/scottenriquez/nature-of-code/blob/main/introduction-02-probability/probability/src/components/sections/randomNormalDistribution.js)
+## Random Numbers with Normal Distribution
 This example plots random numbers generated with a normal distribution (i.e., no specific weights).
 
 ```javascript
@@ -124,7 +110,7 @@ const generateRandomData = () => {
     <RandomNormalDistribution />
 </div>
 
-## [Bell Curve (Frequency Distribution)](https://github.com/scottenriquez/nature-of-code/blob/main/introduction-02-probability/probability/src/components/sections/bellCurve.js)
+## Bell Curve (Frequency Distribution)
 This example shows how to create a bell curve for one thousand monkeys ranging in height from 200 to 300 pixels with a normal distribution. First, generate the data.
 
 ```javascript

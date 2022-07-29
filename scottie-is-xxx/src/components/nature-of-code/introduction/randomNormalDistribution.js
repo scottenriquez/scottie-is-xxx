@@ -1,26 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 import BarChart from '../d3/barChart';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faRefresh} from "@fortawesome/free-solid-svg-icons";
 
-const datasetSize = 100;
-const maxValue = 100;
+class RandomNormalDistribution extends Component {
+    generateRandomData = () => {
+        const datasetSize = 100;
+        const maxValue = 100;
+        const data = [];
+        for(let index = 0; index < datasetSize; index++) {
+            data[index] = {
+                index: index,
+                value: Math.floor(Math.random() * maxValue)
+            }
+        }
+        return data;
+    }
 
-const RandomNormalDistribution = () => {
-    return (
-        <div>
-            <BarChart data={generateRandomData()} xAxisName={'index'} yAxisName={'value'} />
-        </div>
-    );
-}
+    handleRefreshDataClick = (event) => {
+        this.setState({ data: this.generateRandomData() });
+    }
 
-const generateRandomData = () => {
-    const data = [];
-    for(let index = 0; index < datasetSize; index++) {
-        data[index] = {
-            index: index,
-            value: Math.floor(Math.random() * maxValue)
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: this.generateRandomData()
         }
     }
-    return data;
+
+    render() {
+        return (
+            <div>
+                <button style={{ backgroundColor: '#8abeb7' }} onClick={this.handleRefreshDataClick}>
+                    <FontAwesomeIcon icon={faRefresh} /> Generate New Data
+                </button>
+                <BarChart data={this.generateRandomData()} xAxisName={'index'} yAxisName={'value'} />
+            </div>
+        );
+    }
 }
 
 export default RandomNormalDistribution;

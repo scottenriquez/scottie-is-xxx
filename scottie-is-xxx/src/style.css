@@ -331,7 +331,3 @@ a:focus {
     list-style-position: inside;
   }
 }
-
-.center-svg {
-  justify-content: center !important;
-}
