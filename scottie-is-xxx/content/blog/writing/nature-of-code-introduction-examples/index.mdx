@@ -4,6 +4,7 @@ date: "2022-07-24T22:12:03.284Z"
 description: "A companion for the introduction section of Daniel Shiffman's book."
 tag: "Programming"
 ---
+import RandomWalk from '../../../../src/components/nature-of-code/introduction/randomWalk'
 import RandomNormalDistribution from '../../../../src/components/nature-of-code/introduction/randomNormalDistribution'
 import BellCurve from '../../../../src/components/nature-of-code/introduction/bellCurve'
 
@@ -14,79 +15,77 @@ Recently, I started reading a fantastic book called The Nature of Code by Daniel
 Daniel implements numerous examples using a programming language called [Processing](https://processing.org). Instead, I decided to write my own versions using GPLs (complete with blog posts and READMEs).
 
 ## Random Walk
-A random walk traces a path through a Cartesian plane going in a random direction with each step (i.e., one pixel). The base image is created in memory as a 400 by 400 black square. The program creates a white pixel at `(200, 200)`. The `Walk` function chooses a random direction, paints another white pixel, and updates the `Walker` object's internal state for current coordinates.
-```csharp
-private void Walk()
-{
-    Random random = new Random();
-    int step = random.Next(0, 9);
-    switch (step)
-    {
+A random walk traces a path through a Cartesian plane going in a random direction with each step (i.e., one pixel). The walks are built by plotting individual pixels as rectangles in a scalable vector graphic (SVG). The program creates a purple pixel at `(200, 400)`. The `walk` function chooses a random direction, paints another white pixel, and updates the internal state for current coordinates.
+```javascript
+walk() {
+    const step = Math.floor(Math.random() * 4);
+    switch (step) {
         case 0:
-            CurrentXCoordinate++;
+            this.coordinates.x++;
             break;
         case 1:
-            CurrentXCoordinate--;
+            this.coordinates.x--;
             break;
         case 2:
-            CurrentYCoordinate++;
+            this.coordinates.y++;
             break;
-        case 3:
-            CurrentYCoordinate--;
+        default:
+            this.coordinates.y--;
             break;
-        // truncated for brevity
-        // adds pixels diagonally as well
     }
+    this.state.pixels.push({
+        x: this.coordinates.x,
+        y: this.coordinates.y
+    });
 }
 ```
 
-The `WalkWeightedRight` function illustrates the same functionality but with a non-uniform distribution. In this code, there's a 70% chance of moving to the right.
-```csharp
-private void WalkWeightedRight()
-{
-    Random random = new Random();
-    int step = random.Next(0, 10);
-    if (step <= 6)
-    {
-        CurrentXCoordinate++;
+The `walkWeightedRight` function illustrates the same functionality but with a non-uniform distribution. In this code, there's a 70% chance of moving to the right.
+```javascript
+walkWeightedRight() {
+    const step = Math.floor(Math.random() * 10);
+    if (step <= 6) {
+        this.coordinates.x++;
     }
-    else if (step == 7)
-    {
-        CurrentXCoordinate--;
+    else if (step === 7) {
+        this.coordinates.x--;
     }
-    else if (step == 8)
-    {
-        CurrentYCoordinate++;
+    else if (step === 8) {
+        this.coordinates.y++;
     }
-    else
-    {
-        CurrentYCoordinate--;
+    else {
+        this.coordinates.y--;
     }
+    this.state.pixels.push({
+        x: this.coordinates.x,
+        y: this.coordinates.y
+    });
 }
 ```
 
-The `RandomWalk` function calls the `Walk` or `WalkWeightedRight` function until an edge is hit. The program then saves the image in memory to disk.
-```csharp
-public void RandomWalk(bool weightedRight)
-{
-    while (CurrentXCoordinate < Width - 1 && CurrentXCoordinate > 0 && CurrentYCoordinate < Height - 1 &&
-            CurrentYCoordinate > 0)
+The `RandomWalk` function calls the `Walk` or `WalkWeightedRight` function until an edge is hit. The SVG is the rendered.
+```javascript
+randomWalk(weightedRight) {
+    while (this.coordinates.x < width - 1 && this.coordinates.x > 0 && this.coordinates.y < height - 1 &&
+    this.coordinates.y > 0)
     {
-        if (weightedRight)
-        {
-            WalkWeightedRight();
+        if (weightedRight) {
+            this.walkWeightedRight();
         }
-        else
-        {
-            Walk();
+        else {
+            this.walk();
         }
     }
 }
 ```
-
-| Walk Base                               | Walk Right                            |
-| --------------------------------------- | ------------------------------------- |
-| ![](./random-walk.jpg)                  | ![](./random-walk-weighted-right.jpg) |
+Note that generate numerous random walks in rapid succession may cause the browser to crash given the number of pixels.
+<div>
+    <RandomWalk weightedRight={false} buttonText={'Random Walk'}/>
+</div>
+<br />
+<div>
+    <RandomWalk weightedRight={true} buttonText={'Random Walk Weighted Right'}/>
+</div>
 
 ## Random Numbers with Normal Distribution
 This example plots random numbers generated with a normal distribution (i.e., no specific weights).
