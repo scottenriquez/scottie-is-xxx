@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faRefresh } from "@fortawesome/free-solid-svg-icons"
 
 class BellCurve extends Component {
-    generateHeightData = () => {
+    generateHeightData() {
         const data = [];
         const datasetSize = 1000;
         const baseHeight = 200;
@@ -19,7 +19,7 @@ class BellCurve extends Component {
         return data.sort((current, next) => { return current.value - next.value });
     }
 
-    computeMean = (array) => {
+    computeMean(array) {
         let sum = 0;
         for(let index = 0; index < array.length; index++) {
             sum += array[index].value;
@@ -27,7 +27,7 @@ class BellCurve extends Component {
         return sum / array.length;
     }
 
-    computeStandardDeviation = (data, mean) => {
+    computeStandardDeviation(data, mean) {
         let sumSquareDeviation = 0;
         for(let index = 0; index < data.length; index++) {
             sumSquareDeviation += Math.pow(data[index].value - mean, 2);
@@ -35,7 +35,7 @@ class BellCurve extends Component {
         return Math.sqrt(sumSquareDeviation / data.length);
     }
 
-    generateHeightBellCurve = () => {
+    generateHeightBellCurve() {
         const data = this.generateHeightData();
         const meanHeight = this.computeMean(data);
         const standardDeviationHeight = this.computeStandardDeviation(data, meanHeight);

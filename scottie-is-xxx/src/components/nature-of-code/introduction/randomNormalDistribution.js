@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faRefresh} from "@fortawesome/free-solid-svg-icons";
 
 class RandomNormalDistribution extends Component {
-    generateRandomData = () => {
+    generateRandomData() {
         const datasetSize = 100;
         const maxValue = 100;
         const data = [];
