@@ -9,18 +9,17 @@ const height = 400;
 class RandomWalk extends Component {
     constructor(props) {
         super(props);
+        this.steps = {
+            current: 0,
+            max: 10000
+        }
         this.coordinates = {
             x: width / 2,
             y: height / 2,
         }
         this.state = {
-            pixels: []
+            pixels: this.randomWalk(this.props.weightedRight)
         }
-        this.randomWalk(this.props.weightedRight).then((response) => {
-            this.setState({
-                pixels: response.pixels
-            });
-        });
     }
 
     walk(pixels) {
@@ -66,22 +65,22 @@ class RandomWalk extends Component {
     }
 
     randomWalk(weightedRight) {
-        return new Promise((resolve) => {
-            const pixels = [];
-            while (this.coordinates.x < width - 1 && this.coordinates.x > 0 && this.coordinates.y < height - 1 &&
-            this.coordinates.y > 0)
-            {
-                if (weightedRight) {
-                    this.walkWeightedRight(pixels);
-                }
-                else {
-                    this.walk(pixels);
-                }
+        const pixels = [];
+        this.steps.current = 0;
+        while (this.steps.current <= this.steps.max &&
+            this.coordinates.x < width - 1 && this.coordinates.x > 0
+            && this.coordinates.y < height - 1
+            && this.coordinates.y > 0)
+        {
+            if (weightedRight) {
+                this.walkWeightedRight(pixels);
             }
-            resolve({
-                pixels: pixels
-            });
-        });
+            else {
+                this.walk(pixels);
+            }
+            this.steps.current++;
+        }
+        return pixels;
     }
 
     handleRefreshDataClick = (event) => {
@@ -89,18 +88,15 @@ class RandomWalk extends Component {
             x: width / 2,
             y: height / 2,
         }
-        this.randomWalk(this.props.weightedRight).then((response) => {
-            this.setState({
-                pixels: response.pixels
-            });
+        this.setState({
+            pixels: this.randomWalk(this.props.weightedRight)
         });
     }
 
     render() {
-        const refreshButton = this.props.weightedRight ? <button style={{ backgroundColor: '#b294bb', color: 'black' }} onClick={this.handleRefreshDataClick}><FontAwesomeIcon icon={faRefresh} /> Generate {this.props.buttonText}</button> : <></>;
         return (
             <div>
-                {refreshButton}
+                <button style={{ backgroundColor: '#b294bb', color: 'black' }} onClick={this.handleRefreshDataClick}><FontAwesomeIcon icon={faRefresh} /> Generate {this.props.buttonText}</button>
                 <CartesianPlane pixels={this.state.pixels} />
             </div>
         );

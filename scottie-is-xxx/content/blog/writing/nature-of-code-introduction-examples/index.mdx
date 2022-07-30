@@ -66,25 +66,25 @@ walkWeightedRight(pixels) {
 The `randomWalk` function calls the `walk` or `walkWeightedRight` function until an edge is hit. The SVG is then rendered based on the pixels stored in memory representing the path.
 ```javascript
 randomWalk(weightedRight) {
-    return new Promise((resolve) => {
-        const pixels = [];
-        while (this.coordinates.x < width - 1 && this.coordinates.x > 0 && this.coordinates.y < height - 1 &&
-        this.coordinates.y > 0)
-        {
-            if (weightedRight) {
-                this.walkWeightedRight(pixels);
-            }
-            else {
-                this.walk(pixels);
-            }
+    const pixels = [];
+    this.steps.current = 0;
+    while (this.steps.current <= this.steps.max &&
+        this.coordinates.x < width - 1 && this.coordinates.x > 0
+        && this.coordinates.y < height - 1
+        && this.coordinates.y > 0)
+    {
+        if (weightedRight) {
+            this.walkWeightedRight(pixels);
         }
-        resolve({
-            pixels: pixels
-        });
-    });
+        else {
+            this.walk(pixels);
+        }
+        this.steps.current++;
+    }
+    return pixels;
 }
 ```
-The default random walk refresh functionality is disabled for stability due to the high volume of pixels and inefficiency of the algorithm. However, the other examples allow for creating a new SVG for a fresh random data set.
+The random walks are capped at 10,000 pixels for performance reasons.
 <div>
     <RandomWalk weightedRight={false} buttonText={'Random Walk'}/>
 </div>
