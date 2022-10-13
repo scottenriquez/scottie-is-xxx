@@ -58,6 +58,18 @@ const Certs = () => {
                         loading="eager"
                     />
                 </a>
+                <a href="https://www.credly.com/badges/d3007461-ab00-48f1-b6a6-514c9fd496e2/public_url">
+                    <StaticImage
+                        layout="constrained"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/aws-certified-solutions-architect-professional.png"
+                        width={100}
+                        height={100}
+                        quality={95}
+                        alt="AWS Certified Solution Architect - Professional"
+                        loading="eager"
+                    />
+                </a>
                 <a href="https://www.credly.com/badges/b2c78c78-6553-4d7b-a86a-1eab958ee914/public_url">
                     <StaticImage
                         layout="constrained"
