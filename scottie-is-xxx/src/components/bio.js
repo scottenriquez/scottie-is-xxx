@@ -40,7 +40,7 @@ const Bio = () => {
                 <a href="https://tryhard.football/">
                     my fantasy football league
                 </a>
-                .
+                . All opinions expressed here are my own.
             </p>
         </div>
     )
