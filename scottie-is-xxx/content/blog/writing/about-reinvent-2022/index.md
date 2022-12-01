@@ -1,7 +1,7 @@
 ---
-title: re:Invent 2022 Releases 
+title: AWS re:Invent 2022 
 date: "2022-11-29T22:12:03.284Z"
-description: "Thoughts and proofs-of-concepts from re:Invent 2022 release."
+description: "Thoughts and proofs-of-concepts from re:Invent 2022 releases."
 tag: "Programming"
 ---
 
@@ -152,3 +152,24 @@ Cold start with SnapStart (537.94 milliseconds):
 ![with-snapstart.png](with-snapstart.png)
 
 A few cold start tests are hardly conclusive, but I'm excited to see how AWS customers' performance and costs fare at scale. One thing to note is that in both my testing and the Jeff Barr example, the billed duration increased with SnapStart while the total duration decreased (i.e., this may be faster but come with an indirect cost).
+
+## Amazon RDS Managed Blue/Green Deployments
+
+> When updating databases, using a blue/green deployment technique is an appealing option for users to minimize risk and downtime. This method of making database updates requires two database environments: your current production environment, or blue environment, and a staging environment, or green environment.
+
+I find [this release](https://aws.amazon.com/blogs/aws/new-fully-managed-blue-green-deployments-in-amazon-aurora-and-amazon-rds/) particularly valuable, given that many AWS customers are trying to maximize their use of Graviton for managed services, including RDS. Graviton processors are designed by AWS and achieve significant price-performance improvements. They also offer savings versus Intel chips. Typically, the adoption of Graviton for EC2 is a high-lift engineering activity since code and dependencies must support ARM. However, with managed services, AWS handles software dependency management. This makes RDS an excellent candidate for Graviton savings. Due to the stateful nature of databases, changes introduce additional risks. Blue/Green Deployments mitigate much of this risk by having two fully functional environments coexisting.
+
+To test this feature, I provisioned a MySQL RDS instance with an older version on an Intel instance with a previous-generation general-purpose SSD. A Blue/Green deployment can then be created via the Console and CLI, which spawns a second instance. I then modified the Green instance to use `gp3` storage, a Graviton instance type (`db.t4g.medium`), and the latest version of MySQL.
+
+![rds-blue-green-deployment.png](rds-blue-green-deployment.png)
+
+Once the Green instance modifications were finished, I then switched over the instances.
+
+![rds-blue-green-switch-over.png](rds-blue-green-switch-over.png)
+
+## Amazon CodeWhisperer Support for C# and TypeScript
+CodeWhisperer, Amazon's response to GitHub Copilot, is described as an ML-powered coding companion. I had yet to test the preview, but [this release](https://aws.amazon.com/about-aws/whats-new/2022/11/amazon-codewhisperer-enterprise-controls-sign-up-new-languages/) is relevant to me, given I write mostly TypeScript and C# these days. Moreover, TypeScript is particularly interesting to the cloud community, given that it is the de facto standard for CDK as the first language supported. CodeWhisperer is available as part of the AWS Toolkit for Visual Studio Code and the JetBrains suite, but I opted to give it a test run in Cloud9, AWS's cloud-based IDE.
+
+![amazon-codewhisperer.png](amazon-codewhisperer.png)
+
+CodeWhisperer is proficient at generating code against the AWS SDK, such as functions to stop an EC2 instance or fetch objects from an S3 bucket. With regards to CDK, it generated simple constructs sufficiently for me. However, CodeWhisperer tended to generate recommendations line-by-line instead of in large blocks for larger and more complex constructs. In addition, the recommendations seemed to be context-aware (i.e., recommending valid properties and methods based on class definitions). These two use cases alone provide a great deal of opportunity since most of the time I spend writing code with AWS SDK and CDK tends to be spent reading documentation.
