@@ -159,7 +159,7 @@ A few cold start tests are hardly conclusive, but I'm excited to see how AWS cus
 
 I find [this release](https://aws.amazon.com/blogs/aws/new-fully-managed-blue-green-deployments-in-amazon-aurora-and-amazon-rds/) particularly valuable, given that many AWS customers are trying to maximize their use of Graviton for managed services, including RDS. Graviton processors are designed by AWS and achieve significant price-performance improvements. They also offer savings versus Intel chips. Typically, the adoption of Graviton for EC2 is a high-lift engineering activity since code and dependencies must support ARM. However, with managed services, AWS handles software dependency management. This makes RDS an excellent candidate for Graviton savings. Due to the stateful nature of databases, changes introduce additional risks. Blue/Green Deployments mitigate much of this risk by having two fully functional environments coexisting.
 
-To test this feature, I provisioned a MySQL RDS instance with an older version on an Intel instance with a previous-generation general-purpose SSD. A Blue/Green deployment can then be created via the Console and CLI, which spawns a second instance. I then modified the Green instance to use `gp3` storage, a Graviton instance type (`db.t4g.medium`), and the latest version of MySQL.
+To test this feature, I provisioned a MySQL RDS instance with an older version on an Intel instance with a previous-generation general-purpose SSD. A Blue/Green Deployment can then be created via the Console and CLI, which spawns a second instance. I then modified the Green instance to use `gp3` storage, a Graviton instance type (`db.t4g.medium`), and the latest version of MySQL.
 
 ![rds-blue-green-deployment.png](rds-blue-green-deployment.png)
 
