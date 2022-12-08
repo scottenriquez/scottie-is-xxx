@@ -57,7 +57,7 @@ body a:focus {
     color: black;
     font-size: 10px;
     letter-spacing: 0.025rem;
-    padding: 0.1rem 0.5rem;
+    padding: 0.01rem 0.5rem;
     position: absolute;
     right: 1rem;
     text-align: right;
