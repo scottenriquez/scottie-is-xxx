@@ -11,17 +11,17 @@ hr {
 }
 
 p code {
-    background-color: #DE6E18 !important;
-    color: white !important;
+    background-color: #61FFCA !important;
+    color: black !important;
 }
 
 li code {
-    background-color: #DE6E18 !important;
-    color: white !important;
+    background-color: #61FFCA !important;
+    color: black !important;
 }
 
 body a {
-    color: #DE6E18 !important;
+    color: #61FFCA !important;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -30,14 +30,14 @@ body a {
 body a:hover,
 body a:focus {
     text-decoration: none;
-    color: white !important;
-    background-color: #DE6E18;
+    color: black !important;
+    background-color: #61FFCA;
     border-radius: 5px;
 }
 
 .post-tag {
-    color: white !important;
-    background-color: #DE6E18;
+    color: black !important;
+    background-color: #61FFCA;
     border-radius: 5px;
     padding: 2px;
 }
@@ -54,7 +54,7 @@ body a:focus {
 .gatsby-highlight pre[class*="language-"]::before {
     background: black;
     border-radius: 0 0 0.25rem 0.25rem;
-    color: white;
+    color: black;
     font-size: 10px;
     letter-spacing: 0.025rem;
     padding: 0.1rem 0.5rem;
@@ -66,121 +66,121 @@ body a:focus {
 
 .gatsby-highlight pre[class="language-javascript"]::before {
     content: "JavaScript";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-jsx"]::before {
     content: "JSX";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-typescript"]::before {
     content: "TypeScript";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-swift"]::before {
     content: "Swift";
-    background: #5dbcd2;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-shell"]::before {
     content: "Shell";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-python"]::before {
     content: "Python";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-java"]::before {
     content: "Java";
-    background: #5dbcd2;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-markdown"]::before {
     content: "Markdown";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-html"]::before {
     content: "HTML";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-csharp"]::before {
     content: "C#";
-    background: #5dbcd2;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-yaml"]::before {
     content: "YAML";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-dockerfile"]::before {
     content: "Dockerfile";
-    background: #466c69;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-json"]::before {
     content: "JSON";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-editorconfig"]::before {
     content: "EditorConfig";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-toml"]::before {
     content: "TOML";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-hcl"]::before {
     content: "HCL";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-xml"]::before {
     content: "XML";
-    background: #5c8464;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-sql"]::before {
     content: "SQL";
-    background: #ba9282;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 .gatsby-highlight pre[class="language-graphql"]::before {
     content: "GraphQL";
-    background: #ba9282;
-    color: white;
+    background: #61FFCA;
+    color: black;
 }
 
 blockquote {
     background: #424242;
-    border-left: 10px solid #DE6E18;
+    border-left: 10px solid #61FFCA;
     margin: 1.5em 10px;
     padding: 0.5em 10px;
     quotes: "“" "”" "‘" "’";
@@ -188,7 +188,7 @@ blockquote {
 }
 
 blockquote:before {
-    color: #DE6E18;
+    color: #61FFCA;
     content: open-quote;
     font-size: 4em;
     line-height: 0.1em;
@@ -197,7 +197,7 @@ blockquote:before {
 }
 
 blockquote:after {
-    color: #DE6E18;
+    color: #61FFCA;
     content: close-quote;
     font-size: 4em;
     line-height: 0.1em;
@@ -210,7 +210,7 @@ blockquote p {
 }
 
 table, tr, td, th {
-    color: white;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    color: black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }

@@ -9,7 +9,7 @@ class CartesianPlane extends Component {
         const pixelRectangles = [];
         for(let index = 0; index < this.props.pixels.length; index++) {
             const pixel = this.props.pixels[index];
-            pixelRectangles.push(<rect key={Math.random() * 10000000} x={pixel.x} y={pixel.y} width={1} height={1} style={{fill: 'rgb(178, 148, 187)'}} />);
+            pixelRectangles.push(<rect key={Math.random() * 10000000} x={pixel.x} y={pixel.y} width={1} height={1} style={{fill: 'rgb(162, 119, 255)'}} />);
         }
         return (
             <div>

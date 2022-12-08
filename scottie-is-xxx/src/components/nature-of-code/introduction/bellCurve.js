@@ -69,7 +69,7 @@ class BellCurve extends Component {
     render() {
         return (
             <div>
-                <button style={{ backgroundColor: '#8abeb7', color: 'black' }} onClick={this.handleRefreshDataClick}>
+                <button style={{ backgroundColor: '#61FFCA', color: 'black' }} onClick={this.handleRefreshDataClick}>
                     <FontAwesomeIcon icon={faRefresh} /> Generate New Bell Curve
                 </button>
                 <BarChart data={this.state.data} xAxisName={'standardDeviations'} yAxisName={'count'} />
