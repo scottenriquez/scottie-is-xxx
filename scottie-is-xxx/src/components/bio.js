@@ -34,7 +34,7 @@ const Bio = () => {
                 <a href="/serving/resume.pdf">
                     <strong>Scottie Enriquez</strong>
                 </a>
-                , a cloud solution architect, software developer, and
+                , a cloud solutions architect, software developer, and
                 occasional nomad. I currently live in Los Angeles, California and work for <a href="https://aws.amazon.com/">Amazon Web Services</a>. I also write an{" "}
                 <a href="https://micro.scottie.blog/">indie microblog</a> and a blog for{" "}
                 <a href="https://tryhard.football/">
