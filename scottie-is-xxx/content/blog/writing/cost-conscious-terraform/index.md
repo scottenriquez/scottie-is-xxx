@@ -1,7 +1,7 @@
 ---
 title: Writing Cost-Conscious Terraform Using Infracost and AWS Developer Tools 
 date: "2022-07-16T22:12:03.284Z"
-description: "A deployment pipeline that alerts Terraform developers of cost increases."
+description: "A CI/CD pipeline that alerts Terraform developers of cost increases."
 tag: "Programming"
 ---
 ## Solution Overview
@@ -64,7 +64,7 @@ cdk deploy
 Before testing the pipeline, [subscribe to the SNS topic via the Console](https://docs.aws.amazon.com/sns/latest/dg/sns-create-subscribe-endpoint-to-topic.html). For testing purposes, use email to get the cost change data delivered.
 
 ## Using the Deployment Pipeline
-The CodePipeline is triggered at creation, but there are manual approval stages to prevent any infrastructure from being created without intervention. Feel free to deploy the Terraform, but it is not required for generating cost differences via a pull request. The CodePipeline is triggered by changes to `main`.
+The CodePipeline resource is triggered at creation, but there are manual approval stages to prevent any infrastructure from being created without intervention. Feel free to deploy the Terraform, but it is not required for generating cost differences via a pull request. The CodePipeline is triggered by changes to `main`.
 
 ![Approval](codepipeline-approval.png)
 
