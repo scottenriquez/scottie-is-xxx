@@ -1,5 +1,5 @@
 ---
-title: Writing Optimized Lambda Functions Using AWS Lambda Power Tuning
+title: Writing Optimized Functions Using AWS Lambda Power Tuning
 date: "2023-11-03T22:12:03.284Z"
 description: "A CI/CD pipeline that ensures Lambda functions are optimized for cost."
 tag: "Programming"
