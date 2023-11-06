@@ -10,7 +10,7 @@ As I [wrote about previously](https://scottie.is/writing/cost-conscious-terrafor
 
 > AWS Lambda Power Tuning is an open-source tool that can help you visualize and fine-tune the memory and power configuration of Lambda functions. It runs in your own AWS account, powered by AWS Step Functions, and it supports three optimization strategies: cost, speed, and balanced.
 
-Lambda pricing is determined by the number of invocations and the execution duration. From a cost optimization perspective, there are several strategies for decreasing duration costs including using Graviton for 20% savings (which this solution does for both Lambda and CodeBuild), leveraging the latest runtime versions, taking advantage of execution reuse, etc. In addition to these, optimizing memory allocation is a key mechanism for efficiency. From the [documentation](https://aws.amazon.com/lambda/pricing/):
+Lambda pricing is determined by the number of invocations and the execution duration. There are several strategies for decreasing duration costs including using Graviton for 20% savings (which this solution does for both Lambda and CodeBuild), leveraging the latest runtime versions, taking advantage of execution reuse, etc. In addition to these, optimizing memory allocation is a key mechanism for efficiency. From the [documentation](https://aws.amazon.com/lambda/pricing/):
 
 > The [duration] price depends on the amount of memory you allocate to your function. In the AWS Lambda resource model, you choose the amount of memory you want for your function and are allocated proportional CPU power and other resources. An increase in memory size triggers an equivalent increase in CPU available to your function.
 
