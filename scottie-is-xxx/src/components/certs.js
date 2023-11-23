@@ -82,11 +82,11 @@ const Certs = () => {
                         loading="eager"
                     />
                 </a>
-                <a href="https://www.credly.com/badges/33179129-1e02-4f47-8a2a-013fe9b5c6b2/public_url">
+                <a href="https://www.credly.com/badges/682c12b3-a38f-411c-90b2-084070edb59c/public_url">
                     <StaticImage
                         layout="constrained"
                         formats={["auto", "webp", "avif"]}
-                        src="../images/hashicorp-certified-terraform-associate.png"
+                        src="../images/hashicorp-certified-terraform-associate-003.png"
                         width={100}
                         height={100}
                         quality={95}
