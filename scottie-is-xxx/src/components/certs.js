@@ -94,7 +94,7 @@ const Certs = () => {
                         loading="eager"
                     />
                 </a>
-                <a href="https://www.credly.com/badges/ff44693b-3e47-47c1-b1ff-371640144a61/public_url">
+                <a href="https://learn.microsoft.com/api/credentials/share/en-us/scottie-enriquez/22C747278A56F6D0?sharingId=CC24E71FCD34FD03">
                     <StaticImage
                         layout="constrained"
                         formats={["auto", "webp", "avif"]}
