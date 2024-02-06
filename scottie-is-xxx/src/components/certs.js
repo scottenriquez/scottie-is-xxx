@@ -1,6 +1,6 @@
 import React from "react"
-import { rhythm } from "../utils/typography"
-import { StaticImage } from "gatsby-plugin-image"
+import {rhythm} from "../utils/typography"
+import {StaticImage} from "gatsby-plugin-image"
 
 const Certs = () => {
     return (
@@ -8,7 +8,7 @@ const Certs = () => {
             <div style={{
                 display: `flex`,
                 justifyContent: 'center',
-                marginBottom: rhythm(2.5),
+                marginBottom: rhythm(0.5),
             }}>
                 <a href="https://www.credly.com/badges/a7e6b0f7-ce2a-431d-8f9f-17bad4a0cb4d/public_url">
                     <StaticImage
@@ -82,15 +82,21 @@ const Certs = () => {
                         loading="eager"
                     />
                 </a>
-                <a href="https://www.credly.com/badges/682c12b3-a38f-411c-90b2-084070edb59c/public_url">
+            </div>
+            <div style={{
+                display: `flex`,
+                justifyContent: 'center',
+                marginBottom: rhythm(2.5),
+            }}>
+                <a href="https://www.credly.com/badges/ca27c82b-a97a-4cf1-b983-d59f521dc324/public_url">
                     <StaticImage
                         layout="constrained"
                         formats={["auto", "webp", "avif"]}
-                        src="../images/hashicorp-certified-terraform-associate-003.png"
+                        src="../images/microsoft-certified-azure-fundamentals.png"
                         width={100}
                         height={100}
                         quality={95}
-                        alt="HashiCorp Certified: Terraform Associate"
+                        alt="Microsoft Certified: Azure Fundamentals"
                         loading="eager"
                     />
                 </a>
@@ -103,6 +109,42 @@ const Certs = () => {
                         height={100}
                         quality={95}
                         alt="Microsoft Certified: Azure Developer Associate"
+                        loading="eager"
+                    />
+                </a>
+                <a href="https://learn.microsoft.com/en-us/users/scottie-enriquez/credentials/696d4be304a2844e">
+                    <StaticImage
+                        layout="constrained"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/microsoft-certified-azure-administrator-associate.png"
+                        width={100}
+                        height={100}
+                        quality={95}
+                        alt="Microsoft Certified: Azure Administrator Associate"
+                        loading="eager"
+                    />
+                </a>
+                <a href="https://learn.microsoft.com/en-us/users/scottie-enriquez/credentials/8df39e881340424b">
+                    <StaticImage
+                        layout="constrained"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/microsoft-certified-azure-solutions-architect-expert.png"
+                        width={100}
+                        height={100}
+                        quality={95}
+                        alt="Microsoft Certified: Azure Solutions Architect Expert"
+                        loading="eager"
+                    />
+                </a>
+                <a href="https://www.credly.com/badges/682c12b3-a38f-411c-90b2-084070edb59c/public_url">
+                    <StaticImage
+                        layout="constrained"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/hashicorp-certified-terraform-associate-003.png"
+                        width={100}
+                        height={100}
+                        quality={95}
+                        alt="HashiCorp Certified: Terraform Associate"
                         loading="eager"
                     />
                 </a>
