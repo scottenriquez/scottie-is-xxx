@@ -8,7 +8,7 @@ const Certs = () => {
             <div style={{
                 display: `flex`,
                 justifyContent: 'center',
-                marginBottom: rhythm(0.5),
+                marginBottom: rhythm(0.25),
             }}>
                 <a href="https://www.credly.com/badges/a7e6b0f7-ce2a-431d-8f9f-17bad4a0cb4d/public_url">
                     <StaticImage
@@ -86,8 +86,20 @@ const Certs = () => {
             <div style={{
                 display: `flex`,
                 justifyContent: 'center',
-                marginBottom: rhythm(2.5),
+                marginBottom: rhythm(2),
             }}>
+                <a href="https://www.credly.com/badges/76876059-afa7-4c6f-94b9-4d10e4d92dd4/public_url">
+                    <StaticImage
+                        layout="constrained"
+                        formats={["auto", "webp", "avif"]}
+                        src="../images/aws-knowledge-serverless.png"
+                        width={100}
+                        height={100}
+                        quality={95}
+                        alt="AWS Knowledge: Serverless"
+                        loading="eager"
+                    />
+                </a>
                 <a href="https://www.credly.com/badges/ca27c82b-a97a-4cf1-b983-d59f521dc324/public_url">
                     <StaticImage
                         layout="constrained"
